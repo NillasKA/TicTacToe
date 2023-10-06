@@ -5,6 +5,9 @@
  */
 package tictactoe.bll;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Stegger
@@ -12,6 +15,7 @@ package tictactoe.bll;
 public class GameBoard implements IGameModel
 {
     private int nextPlayer;
+    List scenario = new ArrayList<>();
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -42,10 +46,14 @@ public class GameBoard implements IGameModel
      */
     public boolean play(int col, int row)
     {
-        //TODO Implement this method
-        return true;
+        String playedScenario = Integer.toString(col) + row;
+        if(!scenario.contains(playedScenario)){
+            scenario.add(playedScenario);
+            System.out.println(scenario);
+            return true;}
+        else
+            return false;
     }
-
     public boolean isGameOver()
     {
         //TODO Implement this method
