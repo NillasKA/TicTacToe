@@ -11,6 +11,7 @@ package tictactoe.bll;
  */
 public class GameBoard implements IGameModel
 {
+    private int nextPlayer;
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -19,8 +20,14 @@ public class GameBoard implements IGameModel
      */
     public int getNextPlayer()
     {
-        //TODO Implement this method
-        return 0;
+        if(nextPlayer == 0){
+            nextPlayer = 1;
+            return 0;
+        }
+        else{
+            nextPlayer = 0;
+            return 1;
+        }
     }
 
     /**
