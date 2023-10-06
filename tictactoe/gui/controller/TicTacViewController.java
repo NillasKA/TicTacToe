@@ -41,11 +41,11 @@ public class TicTacViewController implements Initializable
     {
         try
         {
+            game.getNextPlayer();
             Integer row = GridPane.getRowIndex((Node) event.getSource());
             Integer col = GridPane.getColumnIndex((Node) event.getSource());
             int r = (row == null) ? 0 : row;
             int c = (col == null) ? 0 : col;
-            game.getNextPlayer();
             int player = game.getNextPlayer();
             if (game.play(c, r))
             {
