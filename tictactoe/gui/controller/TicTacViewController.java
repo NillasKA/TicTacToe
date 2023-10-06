@@ -5,6 +5,7 @@
  */
 package tictactoe.gui.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
+import tictactoe.gui.TicTacToe;
 
 /**
  *
@@ -32,7 +34,8 @@ public class TicTacViewController implements Initializable
 
     @FXML
     private GridPane gridPane;
-    
+
+    TicTacToe ticTacToe; //Controller
     private static final String TXT_PLAYER = "Player: ";
     private IGameModel game;
 
@@ -112,5 +115,11 @@ public class TicTacViewController implements Initializable
             btn.setText("");
         }
     }
+
+    public void handleMainMenu(ActionEvent actionEvent) throws IOException {
+        ticTacToe.switchToView1(); //Go to Menu
+    }
+
+    public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
 
 }

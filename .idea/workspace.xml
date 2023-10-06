@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bfc570f-4386-4916-8921-bc0efce5c73d" name="Changes" comment="" />
+    <list default="true" id="3bfc570f-4386-4916-8921-bc0efce5c73d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,10 +12,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2WNkRiG8uNi2aItEeSdsqp99RJx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +27,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/krame/OneDrive/Datamatiker/Projekter/TicTacToe/tictactoe",
+    "last_opened_file_path": "C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -38,6 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696580420080</updated>
       <workItem from="1696580422251" duration="18000" />
+      <workItem from="1696588772114" duration="22000" />
     </task>
     <servers />
   </component>
