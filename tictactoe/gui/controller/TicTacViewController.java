@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -35,9 +36,11 @@ public class TicTacViewController implements Initializable
     @FXML
     private GridPane gridPane;
 
+    TicTacMenuViewController menuController;
     TicTacToe ticTacToe; //Controller
-    private static final String TXT_PLAYER = "Player: ";
+    private static String TXT_PLAYER = "Player: ";
     private IGameModel game;
+
 
     @FXML
     private void handleButtonAction(ActionEvent event)
@@ -83,6 +86,7 @@ public class TicTacViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+
         game = new GameBoard();
         setPlayer();
     }
@@ -107,6 +111,13 @@ public class TicTacViewController implements Initializable
         lblPlayer.setText(message);
     }
 
+
+
+    public void setPlayerName(String player1)  {
+        TXT_PLAYER = player1 + " ";
+}
+
+
     private void clearBoard()
     {
         for(Node n : gridPane.getChildren())
@@ -117,9 +128,9 @@ public class TicTacViewController implements Initializable
     }
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
-        ticTacToe.switchToView1(); //Go to Menu
+        ticTacToe.setWindowAndController(1); //Go to Game
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
-
+    public void setMenuController(TicTacMenuViewController controller) {menuController = controller;}
 }

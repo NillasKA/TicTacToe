@@ -27,12 +27,13 @@ public class TicTacMenuViewController implements Initializable
     @FXML
     private Button btnNewGame;
 
-
+    TicTacViewController gameController;
     TicTacToe ticTacToe; //Controller
 
     @FXML
     private void handleNewGame(ActionEvent event) throws IOException {
-        ticTacToe.switchToView2(); //Go to Game
+        gameController.setPlayerName("Test") ;
+        ticTacToe.setWindowAndController(2); //Go to Game
     }
 
     @Override
@@ -42,5 +43,5 @@ public class TicTacMenuViewController implements Initializable
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
-
+    public void setGameController(TicTacViewController controller) {gameController = controller;}
 }
