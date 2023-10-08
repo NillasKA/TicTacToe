@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3bfc570f-4386-4916-8921-bc0efce5c73d" name="Changes" comment="">
+    <list default="true" id="d470080a-f189-4661-baec-597a5a2023d5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe/gui/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe/gui/TicTacToe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe/gui/controller/TicTacMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe/gui/controller/TicTacMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tictactoe/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe/gui/controller/TicTacViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tictactoe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tictactoe.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +19,7 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2WNkRiG8uNi2aItEeSdsqp99RJx" />
+  <component name="ProjectId" id="2WUXhDADkxevAIIHcpAN6FGusC6" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,26 +30,20 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe/TicTacToeSoftware",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
+    "last_opened_file_path": "C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe/TicTacToe/tictactoe",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3bfc570f-4386-4916-8921-bc0efce5c73d" name="Changes" comment="" />
-      <created>1696580420080</created>
+      <changelist id="d470080a-f189-4661-baec-597a5a2023d5" name="Changes" comment="" />
+      <created>1696788251542</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696580420080</updated>
-      <workItem from="1696580422251" duration="18000" />
-      <workItem from="1696588772114" duration="22000" />
-      <workItem from="1696788403789" duration="513000" />
+      <updated>1696788251542</updated>
+      <workItem from="1696788256998" duration="142000" />
+      <workItem from="1696789041154" duration="39000" />
     </task>
     <servers />
   </component>
