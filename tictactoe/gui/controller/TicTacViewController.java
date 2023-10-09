@@ -35,11 +35,19 @@ public class TicTacViewController implements Initializable
 
     @FXML
     private GridPane gridPane;
+    @FXML
+    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+
+    //private IGameModel game;
+    private IGameModel game = new GameBoard(new Button[]{btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
+
+
+
 
     TicTacMenuViewController menuController;
     TicTacToe ticTacToe; //Controller
     private static String TXT_PLAYER = "Player: ";
-    private IGameModel game;
+
 
 
     @FXML
@@ -68,7 +76,6 @@ public class TicTacViewController implements Initializable
                     btn.setText(xOrO);
                     setPlayer();
 
-                    check();
                 }
             }
         } catch (Exception e)
@@ -76,56 +83,9 @@ public class TicTacViewController implements Initializable
             System.out.println(e.getMessage());
         }
     }
-    @FXML
-    private Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
-    @FXML
-    public void check() {
-        Button[] buttons = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9};
 
-        // Check X win conditions
-        for (int[] winCondition : winConditions)
-        {
-            if (buttons[winCondition[0]].getText().equals("X") &&
-                buttons[winCondition[1]].getText().equals("X") &&
-                buttons[winCondition[2]].getText().equals("X"))
-            {
-                xWins(winCondition[0], winCondition[1], winCondition[2]);
-                return;
-            }
-        }
-
-        // Check O win conditions
-        for (int[] winCondition : winConditions)
-        {
-            if (buttons[winCondition[0]].getText().equals("O") &&
-                buttons[winCondition[1]].getText().equals("O") &&
-                buttons[winCondition[2]].getText().equals("O"))
-            {
-                oWins(winCondition[0], winCondition[1], winCondition[2]);
-                return;
-            }
-        }
-    }
-
-    private int[][] winConditions =
-            {
-            {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Rows
-            {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
-            {0, 4, 8}, {2, 4, 6} // Diagonals
-            };
-    public void xWins(int index1, int index2, int index3) {
-        System.out.println("X WINS");
-        // Change to boolean, if true, new window.
-    }
-
-    public void oWins(int index1, int index2, int index3) {
-        System.out.println("O Wins");
-    }
-
-
-
-    @FXML
-    private void handleNewGame(ActionEvent event)
+     @FXML
+     private void handleNewGame(ActionEvent event)
     {
         game.newGame();
         setPlayer();
@@ -135,8 +95,8 @@ public class TicTacViewController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-
-        game = new GameBoard();
+        Button[] buttonsArray = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9};
+        game = new GameBoard(buttonsArray);
         setPlayer();
     }
 
