@@ -42,7 +42,7 @@ public interface IGameModel
     /**
      * Gets the id of the winner, -1 if its a draw.
      *
-     * @return int id of winner, or -1 if draw.
+             * @return int id of winner, or -1 if draw.
      */
     public int getWinner();
 

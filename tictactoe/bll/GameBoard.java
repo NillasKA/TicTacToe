@@ -5,6 +5,8 @@
  */
 package tictactoe.bll;
 
+import javafx.fxml.FXML;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,9 +56,16 @@ public class GameBoard implements IGameModel
         else
             return false;
     }
+
+    /**
+     * Tells us if the game has ended either by draw or by meeting the winning
+     * condition.
+     *
+     * @return true if the game is over, else it will return false.
+     */
     public boolean isGameOver()
     {
-        //TODO Implement this method
+
         return false;
     }
 
@@ -65,6 +74,7 @@ public class GameBoard implements IGameModel
      *
      * @return int id of winner, or -1 if draw.
      */
+
     public int getWinner()
     {
         //TODO Implement this method
@@ -76,7 +86,8 @@ public class GameBoard implements IGameModel
      */
     public void newGame()
     {
-        //TODO Implement this method
+        scenario.clear(); // Clears the Scenario list
+        nextPlayer = 0;
     }
 
 }

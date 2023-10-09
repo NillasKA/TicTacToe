@@ -7,6 +7,7 @@ package tictactoe.gui;
 
 import java.io.IOException;
 import java.net.URL;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,16 +19,16 @@ import tictactoe.gui.controller.TicTacViewController;
 
 
 /**
- *
  * @author Stegger
  */
-public class TicTacToe extends Application
-{
+public class TicTacToe extends Application {
     private Stage primaryStage; // Declare a private Stage field
     private FXMLLoader menuLoader;
 
     public static void main(String[] args) {
-        Application.launch();}
+        Application.launch();
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage; // Set the primaryStage
@@ -51,7 +52,7 @@ public class TicTacToe extends Application
         gameController.setMenuController(menuController);
         menuController.setGameController(gameController);
 
-        if (Choice == 0)    { //First time setup
+        if (Choice == 0) { //First time setup
             Scene scene = new Scene(menuRoot);
             menuRoot.requestFocus(); //Nothing is marked as a start
             primaryStage.setScene(scene);
@@ -60,18 +61,13 @@ public class TicTacToe extends Application
             primaryStage.centerOnScreen();
             primaryStage.getIcons().add(new Image("tictactoe/gui/images/icon.png"));
             primaryStage.show();
-        }
-
-
-        else if (Choice == 1)   { //Change to Menu window
+        } else if (Choice == 1) { //Change to Menu window
             primaryStage.getScene().setRoot(menuRoot);
             menuRoot.requestFocus(); //Nothing is marked as a start
-        }
-        else if (Choice == 2)   { //Change to Game window
+        } else if (Choice == 2) { //Change to Game window
             primaryStage.getScene().setRoot(gameRoot);
             gameRoot.requestFocus(); //Nothing is marked as a start
-        }
-        else {
+        } else {
             primaryStage.getScene().setRoot(menuRoot);
 
         }
