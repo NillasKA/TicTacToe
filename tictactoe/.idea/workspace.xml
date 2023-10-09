@@ -5,52 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/Init.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/bll/GameBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/bll/IGameModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/TicTacToe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/controller/TicTacMenuViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/controller/TicTacViewController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/css/Main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/images/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/images/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/views/TicTacMenuView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/gui/views/TicTacView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/gui/css/Main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/gui/images/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/gui/images/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/gui/views/TicTacView.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/out/production/TicTacToe/TicTacToe/tictactoe.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/TicTacToe/tictactoe/tictactoe.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/images/mute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/images/unmute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gui/sounds/menuMainBackground.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/images/mute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/images/unmute.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/sounds/menuMainBackground.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tictactoe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../tictactoe.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/TicTacToe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/css/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/gui/css/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/views/TicTacMenuView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/views/TicTacMenuView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/bll/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/bll/GameBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/TicTacToe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/TicTacToe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/controller/TicTacViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/controller/TicTacViewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/views/TicTacView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/css/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/TicTacToe/gui/css/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/controller/TicTacMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/controller/TicTacMenuViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/views/TicTacMenuView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/tictactoe/gui/views/TicTacMenuView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -66,21 +52,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe/TicTacToe/tictactoe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Rebasing main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe/TicTacToe/tictactoe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="tictactoe.gui.TicTacToe" />
@@ -101,10 +87,26 @@
       <workItem from="1696577404797" duration="1320000" />
       <workItem from="1696580440950" duration="5581000" />
       <workItem from="1696789082896" duration="195000" />
+      <workItem from="1696835663078" duration="21739000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/bll/GameBoard.java</url>
+          <line>67</line>
+          <properties class="tictactoe.bll.GameBoard">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

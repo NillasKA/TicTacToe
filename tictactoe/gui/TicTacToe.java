@@ -55,6 +55,7 @@ public class TicTacToe extends Application {
         if (Choice == 0) { //First time setup
             Scene scene = new Scene(menuRoot);
             menuRoot.requestFocus(); //Nothing is marked as a start
+            menuController.start(); //Method to startup runs
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.setTitle("Tic Tac Toe");
@@ -64,9 +65,12 @@ public class TicTacToe extends Application {
         } else if (Choice == 1) { //Change to Menu window
             primaryStage.getScene().setRoot(menuRoot);
             menuRoot.requestFocus(); //Nothing is marked as a start
-        } else if (Choice == 2) { //Change to Game window
+            menuController.start(); //Method to startup runs
+        }
+        else if (Choice == 2)   { //Change to Game window
             primaryStage.getScene().setRoot(gameRoot);
             gameRoot.requestFocus(); //Nothing is marked as a start
+            //gameController.start(); //Method to startup runs
         } else {
             primaryStage.getScene().setRoot(menuRoot);
 

@@ -38,7 +38,8 @@ public class TicTacViewController implements Initializable
 
     TicTacMenuViewController menuController;
     TicTacToe ticTacToe; //Controller
-    private static String TXT_PLAYER = "Player: ";
+    private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
+
     private IGameModel game;
 
 
@@ -132,17 +133,21 @@ public class TicTacViewController implements Initializable
         clearBoard();
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-
         game = new GameBoard();
         setPlayer();
     }
 
+
     private void setPlayer()
     {
-        lblPlayer.setText(TXT_PLAYER + game.getNextPlayer());
+        if (game.getNextPlayer() == 0)
+        lblPlayer.setText(TXT_PLAYER1);
+        else
+            lblPlayer.setText(TXT_PLAYER2);
     }
 
     private void displayWinner(int winner)
@@ -162,8 +167,11 @@ public class TicTacViewController implements Initializable
 
 
 
-    public void setPlayerName(String player1)  {
-        TXT_PLAYER = player1 + " ";
+    public void setPlayerName(String player1, String player2)  {
+        this.TXT_PLAYER1 = player1;
+        this.TXT_PLAYER2 = player2;
+        //Add something there remove all space and add 1
+
 }
 
 
