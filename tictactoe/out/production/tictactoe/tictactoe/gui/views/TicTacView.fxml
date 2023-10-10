@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -55,8 +56,16 @@
    <bottom>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" text="Menu" />
-            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" text="New Game" />
+            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" stylesheets="@../css/Main.css" text="Menu">
+               <styleClass>
+                  <String fx:value="buttonHoverMain" />
+                  <String fx:value="buttonMain" />
+               </styleClass></Button>
+            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@../css/Main.css" text="New Game">
+               <styleClass>
+                  <String fx:value="buttonHoverMain" />
+                  <String fx:value="buttonMain" />
+               </styleClass></Button>
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="25.0" />

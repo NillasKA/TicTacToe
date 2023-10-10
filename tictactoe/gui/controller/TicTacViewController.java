@@ -7,6 +7,7 @@ package tictactoe.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
 import tictactoe.gui.TicTacToe;
@@ -31,7 +33,7 @@ import javax.swing.*;
  */
 public class TicTacViewController implements Initializable
 {
-
+    AudioClip placement = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
     @FXML
     private Label lblPlayer;
 
@@ -62,6 +64,7 @@ public class TicTacViewController implements Initializable
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
+        placement.play();
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
@@ -100,6 +103,7 @@ public class TicTacViewController implements Initializable
     private void onDragDropped(DragEvent event) {
         Button targetButton = (Button) event.getSource(); // Find out what button is the target of the drop
         Dragboard db = event.getDragboard(); // Get the data from the clipboard
+        placement.play();
         boolean success = false;
 
         if (db.hasString()) { // Check if the data is a string
@@ -141,6 +145,7 @@ public class TicTacViewController implements Initializable
             int player = game.getNextPlayer();
             System.out.println(c + " " + r);
             System.out.println(player);
+            placement.play();
             if (game.play(c, r))
             {
                 if (game.isGameOver())
