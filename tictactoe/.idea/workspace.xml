@@ -7,7 +7,8 @@
     <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/views/TicTacView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Rebasing main",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Daniel/Documents/Daniel/Skole/[Datamatiker] EASV/Projekter/TicTacToe/TicTacToe/tictactoe/gui/lib",
     "node.js.detected.package.eslint": "true",

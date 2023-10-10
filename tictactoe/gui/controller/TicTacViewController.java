@@ -8,6 +8,9 @@ package tictactoe.gui.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -64,7 +67,7 @@ public class TicTacViewController implements Initializable
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
-        placement.play();
+
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
@@ -80,6 +83,7 @@ public class TicTacViewController implements Initializable
 
 
             if (draggedItemChecker.equals(draggedItem)) {
+                placement.play();
                 Dragboard db = clickedButton.startDragAndDrop(TransferMode.MOVE); //Gets the moved value
                 ClipboardContent content = new ClipboardContent(); //Create a clipboard
                 content.putString(draggedItem); //Put the item in the clipboard that mean its string
@@ -103,17 +107,20 @@ public class TicTacViewController implements Initializable
     private void onDragDropped(DragEvent event) {
         Button targetButton = (Button) event.getSource(); // Find out what button is the target of the drop
         Dragboard db = event.getDragboard(); // Get the data from the clipboard
-        placement.play();
+
         boolean success = false;
+
+        if (targetButton.getText().isEmpty())   {
 
         if (db.hasString()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
-
+            placement.play();
             // Clear the text from the source button (assuming sourceButton is another Button)
             clickedButton.setText("");
             setPlayer();
             success = true;
+        }
         }
 
         if (game.isGameOver())
@@ -128,6 +135,30 @@ public class TicTacViewController implements Initializable
 
 
 
+    private void makeComputerMove() { // Get a list of empty cells on the board
+    List<Button> emptyCells = new ArrayList<>();
+    for (Node node : gridPane.getChildren()) {
+        if (node instanceof Button) {
+            Button button = (Button) node;
+            if (button.getText().isEmpty()) {
+                emptyCells.add(button);
+            }
+        }
+    }
+
+    if (!emptyCells.isEmpty()) {  // Randomly select an empty cell and make the move
+        Random random = new Random();
+        int randomIndex = random.nextInt(emptyCells.size());
+        Button computerMove = emptyCells.get(randomIndex);
+        computerMove.setText("O"); // Computer is always 0
+        tictoctacCounter++;
+        setPlayer();
+
+        if (tictoctacCounter == 6) {
+            game.getNextPlayer();
+        }
+    }
+}
 
 
 
@@ -137,6 +168,7 @@ public class TicTacViewController implements Initializable
     {
         try
         {
+
             game.getNextPlayer();
             Integer row = GridPane.getRowIndex((Node) event.getSource());
             Integer col = GridPane.getColumnIndex((Node) event.getSource());
@@ -144,34 +176,41 @@ public class TicTacViewController implements Initializable
             int c = (col == null) ? 0 : col;
             int player = game.getNextPlayer();
             System.out.println(c + " " + r);
-            System.out.println(player);
-            placement.play();
-            if (game.play(c, r))
-            {
-                if (game.isGameOver())
-                {
-                    int winner = game.getWinner();
-                    displayWinner(winner);
-                }
-                else
-                {
-                    if (tictoctacCounter < 6){
-                        Button btn = (Button) event.getSource();
-                        String xOrO = player == 0 ? "X" : "O";
-                        tictoctacCounter++;
-                        btn.setText(xOrO);
-                        setPlayer();
-                        if (tictoctacCounter == 6) {
-                            game.getNextPlayer();
+
+
+                if (game.play(c, r)) {
+                    if (game.isGameOver()) {
+                        int winner = game.getWinner();
+                        displayWinner(winner);
+                    } else {
+
+
+                        if (tictoctacCounter < 6) {
+                            Button btn = (Button) event.getSource();
+                            String xOrO = player == 0 ? "X" : "O";
+                            tictoctacCounter++;
+                            btn.setText(xOrO);
+                            setPlayer();
+                            placement.play();
+                            if (tictoctacCounter == 6) {
+                                game.getNextPlayer();
+                            }
+                        }
+                        if (TXT_PLAYER2.equals("Computer")) {
+                            makeComputerMove(); // AI's turn
+
                         }
                     }
                 }
-            }
+
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
     }
+
+
+
 
      @FXML
      private void handleNewGame(ActionEvent event)
@@ -201,13 +240,20 @@ public class TicTacViewController implements Initializable
     private void displayWinner(int winner)
     {
         String message = "";
+        String winnerPlayer;
+
         switch (winner)
         {
             case -1:
                 message = "It's a draw :-(";
                 break;
             default:
-                message = "Player " + winner + " wins!!!";
+                if (winner == 0)
+                    winnerPlayer = TXT_PLAYER1;
+                else
+                    winnerPlayer = TXT_PLAYER2;
+
+                message = winnerPlayer + " wins!!!";
                 break;
         }
         lblPlayer.setText(message);
