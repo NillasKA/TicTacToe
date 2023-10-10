@@ -8,10 +8,8 @@ package tictactoe.gui.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
+
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -21,6 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
@@ -59,7 +59,9 @@ public class TicTacViewController implements Initializable
     private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
     private String draggedItem;
     private int tictoctacCounter = 0;
-
+    private boolean winnerFound = false; //U only can win once until game restart
+    @FXML
+    private ImageView btnBackgroundMusicImg;
 
 
 
@@ -67,12 +69,12 @@ public class TicTacViewController implements Initializable
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
-
+        System.out.println(tictoctacCounter);
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
         System.out.println(game.getNextPlayer());
-        if (tictoctacCounter >= 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
+        if (tictoctacCounter == 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
 
             if (player == 0) {
                 draggedItemChecker = "X";
@@ -129,38 +131,111 @@ public class TicTacViewController implements Initializable
             displayWinner(winner);
         }
 
+        else if (TXT_PLAYER2.equals("Computer")) {
+            makeComputerMove(); // AI's turn
+        }
+
+
         event.setDropCompleted(success);
         event.consume();
     }
 
 
 
-    private void makeComputerMove() { // Get a list of empty cells on the board
-    List<Button> emptyCells = new ArrayList<>();
-    for (Node node : gridPane.getChildren()) {
-        if (node instanceof Button) {
-            Button button = (Button) node;
-            if (button.getText().isEmpty()) {
-                emptyCells.add(button);
+    private void makeComputerMove() {
+        int oCount = 0;
+        List<Button> oButtons = new ArrayList<>();  // Check the number of existing "O" markers on the board
+
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Button) {
+                Button button = (Button) node;
+                if (button.getText().equals("O")) {
+                    oCount++;
+                    oButtons.add(button);
+                }
             }
         }
-    }
+        /** This can be done more intelligent **/
+        // If there are three 0, move one of them otherwise add a new 0 marker in empty spot
+        if (oCount == 3) {
+            Random random = new Random(); // Randomly select an "O" marker to move
+            int randomIndex = random.nextInt(oButtons.size());
+            Button sourceCell = oButtons.get(randomIndex);
 
-    if (!emptyCells.isEmpty()) {  // Randomly select an empty cell and make the move
-        Random random = new Random();
-        int randomIndex = random.nextInt(emptyCells.size());
-        Button computerMove = emptyCells.get(randomIndex);
-        computerMove.setText("O"); // Computer is always 0
-        tictoctacCounter++;
-        setPlayer();
+            // Crate a list of empty cells on the board
+            List<Button> emptyCells = new ArrayList<>();
+            for (Node node : gridPane.getChildren()) {
+                if (node instanceof Button) {
+                    Button button = (Button) node;
+                    if (button.getText().isEmpty()) {
+                        emptyCells.add(button);
+                    }
+                }
+            }
 
-        if (tictoctacCounter == 6) {
-            game.getNextPlayer();
+            if (!emptyCells.isEmpty()) {
+                // Randomly select an empty cell as the destination
+                int destIndex = random.nextInt(emptyCells.size());
+                Button destinationCell = emptyCells.get(destIndex);
+
+                destinationCell.setText("O"); // Move the "O" marker from the source to the destination
+                sourceCell.setText(""); //Remove old one
+                setPlayer();
+
+            }
+        } else if (oCount < 3) {
+            // If there are fewer than three "O"s, add a new "O" marker
+            List<Button> emptyCells = new ArrayList<>();
+            for (Node node : gridPane.getChildren()) {
+                if (node instanceof Button) {
+                    Button button = (Button) node;
+                    if (button.getText().isEmpty()) {
+                        emptyCells.add(button);
+                    }
+                }
+            }
+
+            if (!emptyCells.isEmpty()) {
+                // Randomly select an empty cell and place a new "O" marker there
+                Random random = new Random();
+                int randomIndex = random.nextInt(emptyCells.size());
+                Button destinationCell = emptyCells.get(randomIndex);
+                int destRow = Optional.ofNullable(GridPane.getRowIndex(destinationCell)).orElse(0);
+                int destCol = Optional.ofNullable(GridPane.getColumnIndex(destinationCell)).orElse(0);
+
+                if (game.play(destCol, destRow)) {
+                    destinationCell.setText("O");
+                    tictoctacCounter++;
+                    setPlayer();
+
+                    if (tictoctacCounter == 6) {
+                        game.getNextPlayer();
+                    }
+                }
+            }
+        }
+        if (game.isGameOver()) {
+            int winner = game.getWinner();
+
+            displayWinner(winner);
+
         }
     }
-}
 
 
+
+
+
+    @FXML
+    private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
+        if (placement.getVolume() == 0.0) {
+            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/mute.png"));
+            placement.setVolume(0.9); // Mute by setting the volume to 0.0
+        } else {
+            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/unmute.png"));
+            placement.setVolume(0.0); // Unmute by setting the volume to the desired level (e.g., 0.9)
+        }
+    }
 
 
     @FXML
@@ -179,12 +254,6 @@ public class TicTacViewController implements Initializable
 
 
                 if (game.play(c, r)) {
-                    if (game.isGameOver()) {
-                        int winner = game.getWinner();
-                        displayWinner(winner);
-                    } else {
-
-
                         if (tictoctacCounter < 6) {
                             Button btn = (Button) event.getSource();
                             String xOrO = player == 0 ? "X" : "O";
@@ -196,11 +265,16 @@ public class TicTacViewController implements Initializable
                                 game.getNextPlayer();
                             }
                         }
-                        if (TXT_PLAYER2.equals("Computer")) {
+                        if (game.isGameOver()) {
+                            game.getNextPlayer();
+                            int winner = game.getWinner();
+                            displayWinner(winner);
+                        }
+                        else if (TXT_PLAYER2.equals("Computer") && tictoctacCounter < 6) {
                             makeComputerMove(); // AI's turn
+                            System.out.println("Så det nu");
 
                         }
-                    }
                 }
 
         } catch (Exception e)
@@ -219,6 +293,7 @@ public class TicTacViewController implements Initializable
         setPlayer();
         clearBoard();
         tictoctacCounter = 0;
+        winnerFound  = false;
     }
 
     @Override
@@ -241,22 +316,25 @@ public class TicTacViewController implements Initializable
     {
         String message = "";
         String winnerPlayer;
+        tictoctacCounter = 10; //Disable drag and drop and placement
 
-        switch (winner)
-        {
-            case -1:
-                message = "It's a draw :-(";
-                break;
-            default:
-                if (winner == 0)
-                    winnerPlayer = TXT_PLAYER1;
-                else
-                    winnerPlayer = TXT_PLAYER2;
+        if (!winnerFound) {
+            switch (winner) {
+                case -1:
+                    message = "It's a draw :-(";
+                    break;
+                default:
+                    if (winner == 0)
+                        winnerPlayer = TXT_PLAYER1;
+                    else
+                        winnerPlayer = TXT_PLAYER2;
 
-                message = winnerPlayer + " wins!!!";
-                break;
+                    message = winnerPlayer + " wins!!!";
+                    break;
+            }
+            winnerFound = true;
+            lblPlayer.setText(message);
         }
-        lblPlayer.setText(message);
     }
 
 

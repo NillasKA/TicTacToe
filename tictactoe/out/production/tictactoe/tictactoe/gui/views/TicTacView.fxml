@@ -4,12 +4,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.gui.controller.TicTacViewController">
    <center>
@@ -32,7 +36,7 @@
             <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="2" />
-            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="110.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
          <BorderPane.margin>
@@ -40,13 +44,6 @@
          </BorderPane.margin>
       </GridPane>
    </center>
-   <top>
-      <Label fx:id="lblPlayer" text="1" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-   </top>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
    </padding>
@@ -54,14 +51,15 @@
       <Insets />
    </opaqueInsets>
    <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="390.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" stylesheets="@../css/Main.css" text="Menu">
+            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@../css/Main.css" text="New Game">
                <styleClass>
                   <String fx:value="buttonHoverMain" />
                   <String fx:value="buttonMain" />
-               </styleClass></Button>
-            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@../css/Main.css" text="New Game">
+               </styleClass>
+            </Button>
+            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" stylesheets="@../css/Main.css" text="Menu">
                <styleClass>
                   <String fx:value="buttonHoverMain" />
                   <String fx:value="buttonMain" />
@@ -72,4 +70,39 @@
          </padding>
       </HBox>
    </bottom>
+   <top>
+      <VBox alignment="CENTER" prefHeight="103.0" prefWidth="390.0" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <HBox fx:id="commonHeader" prefHeight="77.0" prefWidth="390.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
+                     <font>
+                        <Font size="56.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="65.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Button fx:id="btnBackgroundMusic" mnemonicParsing="false" onAction="#handleMuteUnmuteSound" styleClass="buttonSound" stylesheets="@../css/Main.css">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="btnBackgroundMusicImg" fitHeight="25.0" fitWidth="25.0">
+                           <image>
+                              <Image url="@../images/mute.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label fx:id="lblPlayer" text="1">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
 </BorderPane>

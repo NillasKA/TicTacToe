@@ -7,8 +7,9 @@
     <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/views/TicTacView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
