@@ -70,7 +70,7 @@ public class TicTacToe extends Application {
         else if (Choice == 2)   { //Change to Game window
             primaryStage.getScene().setRoot(gameRoot);
             gameRoot.requestFocus(); //Nothing is marked as a start
-            //gameController.start(); //Method to startup runs
+            gameController.start(); //Method to startup runs
         } else {
             primaryStage.getScene().setRoot(menuRoot);
 

@@ -54,6 +54,10 @@ public class TicTacViewController implements Initializable
     private ImageView btnBackgroundMusicImg;
 
 
+    public void start(){
+        soundManager.startMusic();
+    }
+
     @FXML
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
@@ -254,11 +258,13 @@ public class TicTacViewController implements Initializable
      @FXML
      private void handleNewGame(ActionEvent event)
     {
+        soundManager.startUISound();
         game.newGame();
         setPlayer();
         clearBoard();
         tictoctacCounter = 0;
         winnerFound  = false;
+
     }
 
     @Override
@@ -313,6 +319,8 @@ public class TicTacViewController implements Initializable
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
         ticTacToe.setWindowAndController(1); //Go to Game
+        soundManager.startUISound();
+        soundManager.stopMusic();
     }
 
     @FXML

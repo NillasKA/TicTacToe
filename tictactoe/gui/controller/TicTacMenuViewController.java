@@ -60,8 +60,8 @@ public class TicTacMenuViewController implements Initializable
     private void handleNewGame(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         String buttonText = clickedButton.getText(); // Get the text of the button
+        soundManager.startUISound();
         soundManager.stopMusic();
-
 
         if (txtPlayer1Name.getText().isEmpty())
             player1Name = "Player 1";
@@ -94,6 +94,7 @@ public class TicTacMenuViewController implements Initializable
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) {
         soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
+        soundManager.muteUnmuteUI(btnBackgroundMusicImg);
     }
 
 
@@ -116,6 +117,7 @@ public class TicTacMenuViewController implements Initializable
         stackPane.getChildren().add(menuSetting);
         menuSetting.setTop(commonHeader); //We set the top so the use the same
         menuSetting.requestFocus(); //Nothing is marked as a start
+        soundManager.startUISound();
     }
     @FXML
     public void handleMenuSettingsBack(ActionEvent actionEvent) { //Change view to main menu
@@ -123,6 +125,7 @@ public class TicTacMenuViewController implements Initializable
         stackPane.getChildren().add(menuMain);
         menuMain.setTop(commonHeader); //We set the top so the use the same
         menuMain.requestFocus(); //Nothing is marked as a start
+        soundManager.startUISound();
 
       /**  if (txtPlayer1Name.getText().length() >= 20 || txtPlayer2Name.getText().length() >= 20 ) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
