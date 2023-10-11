@@ -319,23 +319,18 @@ public class TicTacViewController implements Initializable
         tictoctacCounter = 10; //Disable drag and drop and placement
 
         if (!winnerFound) {
-            switch (winner) {
-                case -1:
-                    message = "It's a draw :-(";
-                    break;
-                default:
-                    if (winner == 0)
-                        winnerPlayer = TXT_PLAYER1;
-                    else
-                        winnerPlayer = TXT_PLAYER2;
+            if (winner == 0)
+                winnerPlayer = TXT_PLAYER1;
+            else
+                winnerPlayer = TXT_PLAYER2;
 
-                    message = winnerPlayer + " wins!!!";
-                    break;
+            message = winnerPlayer + " wins!!!";
             }
             winnerFound = true;
             lblPlayer.setText(message);
-        }
     }
+
+
 
 
 

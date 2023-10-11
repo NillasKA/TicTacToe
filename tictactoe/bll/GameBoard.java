@@ -91,12 +91,6 @@ public class GameBoard implements IGameModel
                 return true;
             }
         }
-            if (scenario.size() == buttons.length* buttons.length)
-            {
-            isDraw = true;
-            System.out.println("DRAW");
-            return true;
-            }
 
         return false;
     }
@@ -109,10 +103,6 @@ public class GameBoard implements IGameModel
 
     public int getWinner()
     {
-        //TODO Implement this method
-        if (isDraw == true){
-            return -1;
-        }
         return  nextPlayer == 0 ? 1 : 0;
     }
 
@@ -132,11 +122,8 @@ public class GameBoard implements IGameModel
                     {0, 4, 8}, {2, 4, 6} // Diagonals
             };
     public void xWins(int index1, int index2, int index3) {
-        System.out.println("X WINS");
-        // Change to boolean, if true, new window.
     }
 
     public void oWins(int index1, int index2, int index3) {
-        System.out.println("O Wins");
     }
 }
