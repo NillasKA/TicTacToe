@@ -32,7 +32,7 @@ public class TicTacViewController implements Initializable
 {
     AudioClip placement = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
     @FXML
-    private Label lblPlayer;
+    private Label lblPlayer, lblXScore, lblOScore;
 
     @FXML
     private Button btnNewGame;
@@ -58,7 +58,9 @@ public class TicTacViewController implements Initializable
     private ImageView btnBackgroundMusicImg;
 
 
-
+    /*
+     ******************** DRAG/DROP SECTION ********************
+     */
     @FXML
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
@@ -129,6 +131,10 @@ public class TicTacViewController implements Initializable
         event.consume();
     }
 
+    /*
+     ******************** BOT SECTION ********************
+     */
+
     /** This can be done more intelligent or stupid with some random **/
 
     private void makeComputerMove() {
@@ -136,7 +142,7 @@ public class TicTacViewController implements Initializable
         List<Button> oButtons = new ArrayList<>();
         List<Button> emptyCells = new ArrayList<>();
 
-        for (Node node : gridPane.getChildren()) { //This code check where empty cells is and count O
+        for (Node node : gridPane.getChildren()) {
             if (node instanceof Button) {
                 Button button = (Button) node;
                 if (button.getText().equals("O")) {
@@ -146,14 +152,6 @@ public class TicTacViewController implements Initializable
                     emptyCells.add(button);
                 }
             }
-        }
-
-        /** This can be done more intelligent sometimes it remove a
-         * not strategic brick so it dont win if it can or let the player win**/
-        if (oCount >= 3) { // Randomly choose one O to remove to make space for a new one
-            Random rand = new Random();
-            int randomIndex = rand.nextInt(Math.min(oCount, 3)); // Dont  index out of bounds
-            oButtons.get(randomIndex).setText("");
         }
 
         // Check if the AI can win in the next move
@@ -185,6 +183,28 @@ public class TicTacViewController implements Initializable
 
         }
 
+        if (oCount >= 3) {
+            // Step 1: Find O markers with blocking potential
+            List<Button> blockingOButtons = findOsWithBlockingPotential(oButtons, emptyCells);
+
+            // Step 2: Check if there are "O" markers that are not part of the blocking list
+            List<Button> nonBlockingOButtons = new ArrayList<>(oButtons);
+            nonBlockingOButtons.removeAll(blockingOButtons);
+
+            Random rand = new Random();
+            int randomIndex;
+
+            // Step 3: Remove an "O" marker that is not part of the blocking list if available
+            if (!nonBlockingOButtons.isEmpty()) {
+                randomIndex = rand.nextInt(nonBlockingOButtons.size());
+                nonBlockingOButtons.get(randomIndex).setText("");
+            } else {
+                // Step 4: If there are no non-blocking "O" markers, remove a random "O"
+                randomIndex = rand.nextInt(oButtons.size());
+                oButtons.get(randomIndex).setText("");
+            }
+        }
+
         if (tictoctacCounter <= 5) {
             tictoctacCounter++;
             setPlayer();
@@ -200,6 +220,57 @@ public class TicTacViewController implements Initializable
         }
     }
 
+    private boolean playerIsAboutToWin(String marker) {
+        for (Node node : gridPane.getChildren()) {
+            if (node instanceof Button) {
+                Button button = (Button) node;
+                if (button.getText().isEmpty()) {
+                    String originalText = button.getText(); // Store the original text
+
+                    // Temporarily set the empty cell to the marker and check if the player is about to win
+                    button.setText(marker);
+                    if (game.isGameOver()) {
+                        // Reset the cell back to its original text
+                        button.setText(originalText);
+                        return true;
+                    }
+
+                    // Reset the cell back to its original text for the next iteration
+                    button.setText(originalText);
+                }
+            }
+        }
+        return false; // No winning move found
+    }
+
+
+    List<Button> blockingOButtons = new ArrayList<>();
+    private List<Button> findOsWithBlockingPotential(List<Button> oButtons, List<Button> emptyCells) {
+
+        for (Button oButton : oButtons) {
+            if (oButton.getText().equals("O")) {
+                // Temporarily set the empty cells to "X" and check if the player is about to win
+                String originalText = oButton.getText(); // Store the original text
+                oButton.setText(""); // Temporarily remove the "O"
+
+                for (Button emptyCell : emptyCells) {
+                    if (emptyCell.getText().isEmpty()) {
+                        emptyCell.setText("X");
+                        if (playerIsAboutToWin("X")) {
+                            // Player is about to win, so set this "O" to prevent it
+                            blockingOButtons.add(emptyCell);
+                        }
+                        emptyCell.setText(""); // Reset the cell
+                    }
+                }
+
+                // Reset the original "O"
+                oButton.setText(originalText);
+            }
+        }
+
+        return blockingOButtons;
+    }
 
     private Button findWinningMove(List<Button> emptyCells, String marker) {
         for (Button cell : emptyCells) {
@@ -217,6 +288,10 @@ public class TicTacViewController implements Initializable
         }
         return null; // No winning move found
     }
+
+    /*
+     ******************** OTHER SECTION ********************
+     */
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
@@ -280,6 +355,8 @@ public class TicTacViewController implements Initializable
         clearBoard();
         tictoctacCounter = 0;
         winnerFound  = false;
+        lblXScore.setText("X: 0 ");
+        lblOScore.setText("0 :O");
     }
 
     @Override
@@ -305,10 +382,16 @@ public class TicTacViewController implements Initializable
         tictoctacCounter = 10; //Disable drag and drop and placement
 
         if (!winnerFound) {
-            if (winner == 0)
+            if (winner == 0) {
                 winnerPlayer = TXT_PLAYER1;
-            else
+
+            }
+            else {
                 winnerPlayer = TXT_PLAYER2;
+            }
+
+            lblXScore.setText("X: " + GameBoard.getXScore());
+            lblOScore.setText(GameBoard.getOScore() + ":O" );
 
             message = winnerPlayer + " wins!!!";
             }
@@ -333,6 +416,10 @@ public class TicTacViewController implements Initializable
             Button btn = (Button) n;
             btn.setText("");
         }
+    }
+
+    public void start() {
+        clearBoard();
     }
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {

@@ -22,7 +22,10 @@ public class GameBoard implements IGameModel
     public GameBoard(Button[] buttons) {
         this.buttons = buttons;
     }
-    private boolean isDraw = false;
+
+
+    private static int xScore = 0;
+    private static int oScore = 0;
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -113,7 +116,17 @@ public class GameBoard implements IGameModel
     {
         scenario.clear(); // Clears the Scenario list
         nextPlayer = 0;
+        xScore = 0;
+        oScore = 0;
     }
+
+    public static String getXScore() {
+        return Integer.toString(xScore);
+    }
+    public static String getOScore() {
+        return Integer.toString(oScore);
+    }
+
 
     private int[][] winConditions =
             {
@@ -122,8 +135,10 @@ public class GameBoard implements IGameModel
                     {0, 4, 8}, {2, 4, 6} // Diagonals
             };
     public void xWins(int index1, int index2, int index3) {
+        xScore++;
     }
 
     public void oWins(int index1, int index2, int index3) {
+        oScore++;
     }
 }

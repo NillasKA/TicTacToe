@@ -97,11 +97,17 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="lblPlayer" text="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
+               <children>
+                  <Label fx:id="lblXScore" layoutX="23.0" layoutY="10.0" text="X: 0" />
+                  <Label fx:id="lblPlayer" text="1">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOScore" text="O: 0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </top>
