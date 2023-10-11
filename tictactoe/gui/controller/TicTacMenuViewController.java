@@ -40,8 +40,6 @@ public class TicTacMenuViewController implements Initializable
     @FXML
     private ImageView btnBackgroundMusicImg;
 
-    private String player2Name , player1Name;
-
     TicTacViewController gameController;
     TicTacToe ticTacToe; //Controller
 
@@ -55,8 +53,8 @@ public class TicTacMenuViewController implements Initializable
         String buttonText = clickedButton.getText(); // Get the text of the button
         backgroundMusic.stop();
 
-        player1Name = txtPlayer1Name.getText().isEmpty() ? "Player 1" : txtPlayer1Name.getText();
-        player2Name = txtPlayer2Name.getText().isEmpty() ? "Player 2" : txtPlayer2Name.getText();
+        String player1Name = txtPlayer1Name.getText().isEmpty() ? "Player 1" : txtPlayer1Name.getText();
+        String player2Name = txtPlayer2Name.getText().isEmpty() ? "Player 2" : txtPlayer2Name.getText();
 
         if (buttonText.equals("1 Player"))  {
             gameController.setPlayerName(player1Name, "Computer") ;

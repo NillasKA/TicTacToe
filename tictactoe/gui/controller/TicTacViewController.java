@@ -11,14 +11,11 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
@@ -28,12 +25,9 @@ import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
 import tictactoe.gui.TicTacToe;
 
-import javax.swing.*;
-
 /**
- *
- * @author Stegger
- */
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 public class TicTacViewController implements Initializable
 {
     AudioClip placement = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
@@ -154,10 +148,12 @@ public class TicTacViewController implements Initializable
             }
         }
 
-
-        if (oCount >= 3) {
-            // Remove one "O" to make space for a new one always take the first which make bot stupid
-            oButtons.get(0).setText("");
+        /** This can be done more intelligent sometimes it remove a
+         * not strategic brick so it dont win if it can or let the player win**/
+        if (oCount >= 3) { // Randomly choose one O to remove to make space for a new one
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(Math.min(oCount, 3)); // Dont  index out of bounds
+            oButtons.get(randomIndex).setText("");
         }
 
         // Check if the AI can win in the next move
@@ -239,46 +235,41 @@ public class TicTacViewController implements Initializable
     {
         try
         {
-
-
-            game.getNextPlayer();
-            Integer row = GridPane.getRowIndex((Node) event.getSource());
-            Integer col = GridPane.getColumnIndex((Node) event.getSource());
-            int r = (row == null) ? 0 : row;
-            int c = (col == null) ? 0 : col;
-            int player = game.getNextPlayer();
-            System.out.println(c + " " + r);
-
+            if (!winnerFound) {
+                game.getNextPlayer();
+                Integer row = GridPane.getRowIndex((Node) event.getSource());
+                Integer col = GridPane.getColumnIndex((Node) event.getSource());
+                int r = (row == null) ? 0 : row;
+                int c = (col == null) ? 0 : col;
+                int player = game.getNextPlayer();
+                System.out.println(c + " " + r);
 
                 if (game.play(c, r)) {
-                        if (tictoctacCounter < 6) {
-                            Button btn = (Button) event.getSource();
-                            String xOrO = player == 0 ? "X" : "O";
-                            tictoctacCounter++;
-                            btn.setText(xOrO);
-                            setPlayer();
-                            placement.play();
-                            if (tictoctacCounter == 6) {
-                                game.getNextPlayer();
-                            }
-                        }
-                        if (game.isGameOver()) {
+                    if (tictoctacCounter < 6) {
+                        Button btn = (Button) event.getSource();
+                        String xOrO = player == 0 ? "X" : "O";
+                        tictoctacCounter++;
+                        btn.setText(xOrO);
+                        setPlayer();
+                        placement.play();
+                        if (tictoctacCounter == 6) {
                             game.getNextPlayer();
-                            int winner = game.getWinner();
-                            displayWinner(winner);
                         }
-                        else if (TXT_PLAYER2.equals("Computer") && tictoctacCounter < 6) {
-                            makeComputerMove(); // AI's turn
-                        }
+                    }
+                    if (game.isGameOver()) {
+                        game.getNextPlayer();
+                        int winner = game.getWinner();
+                        displayWinner(winner);
+                    } else if (TXT_PLAYER2.equals("Computer") && tictoctacCounter < 6) {
+                        makeComputerMove(); // AI's turn
+                    }
                 }
-
+            }
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
     }
-
-
 
 
      @FXML
@@ -302,7 +293,7 @@ public class TicTacViewController implements Initializable
     private void setPlayer()
     {
         if (game.getNextPlayer() == 0)
-        lblPlayer.setText(TXT_PLAYER1);
+            lblPlayer.setText(TXT_PLAYER1);
         else
             lblPlayer.setText(TXT_PLAYER2);
     }
@@ -324,8 +315,6 @@ public class TicTacViewController implements Initializable
             winnerFound = true;
             lblPlayer.setText(message);
     }
-
-
 
 
 
