@@ -95,6 +95,7 @@ public class TicTacMenuViewController implements Initializable
     private void handleMuteUnmuteSound(ActionEvent event) {
         soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
         soundManager.muteUnmuteUI(btnBackgroundMusicImg);
+        System.out.println(soundManager.getMuteAll());
     }
 
 

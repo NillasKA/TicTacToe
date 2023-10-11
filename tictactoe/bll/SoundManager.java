@@ -14,17 +14,27 @@ public class SoundManager {
     AudioClip placementSound = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
     AudioClip uiSound = new AudioClip(Paths.get("gui/sounds/uiSound.wav").toUri().toString());
     MediaPlayer backgroundMusic = new MediaPlayer(new Media(new File("gui/sounds/menuMainBackground.mp3").toURI().toString()));
+    private static boolean muteAll;
 
+    public boolean getMuteAll(){
+        return muteAll;
+    }
 
     /*
      ******************** MUSIC SECTION ********************
      */
     public void startMusic() {
-        backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusic.play();
-        backgroundMusic.setVolume(0.3);
-    }
+        if(!muteAll){
+            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
+            backgroundMusic.play();
+            backgroundMusic.setVolume(0.3);
+        }
+        else{
+            backgroundMusic.play();
+            backgroundMusic.setMute(true);
+        }
 
+    }
 
     public void stopMusic() {
         backgroundMusic.stop();
@@ -32,12 +42,14 @@ public class SoundManager {
 
     //Handles muting and unmuting sound, as well as replacing the mute and unmute picture.
     public void muteUnmuteMusic(ImageView img) {
-        if (backgroundMusic.isMute()) {
+        if (muteAll) {
             img.setImage(new Image("tictactoe/gui/images/mute.png"));
             backgroundMusic.setMute(false); // Unmute
-        } else {
+            muteAll = false;
+        } else if(!muteAll) {
             img.setImage(new Image("tictactoe/gui/images/unmute.png"));
             backgroundMusic.setMute(true); // Mute
+            muteAll = true;
         }
     }
 

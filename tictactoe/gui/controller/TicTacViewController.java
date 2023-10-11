@@ -324,9 +324,10 @@ public class TicTacViewController implements Initializable
     }
 
     @FXML
-    private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
+    private void handleMuteUnmuteSound(ActionEvent event) { //Handles the mute button
         soundManager.muteUnmutePlacement(btnBackgroundMusicImg);
         soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
+        System.out.println(soundManager.getMuteAll());
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
