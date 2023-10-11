@@ -7,28 +7,22 @@ package tictactoe.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.*;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.AudioClip;
 import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
+import tictactoe.bll.SoundManager;
 import tictactoe.gui.TicTacToe;
 
-import javax.swing.*;
 
 /**
  *
@@ -36,10 +30,8 @@ import javax.swing.*;
  */
 public class TicTacViewController implements Initializable
 {
-    AudioClip placement = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
     @FXML
     private Label lblPlayer;
-
     @FXML
     private Button btnNewGame;
 
@@ -50,10 +42,8 @@ public class TicTacViewController implements Initializable
 
     //private IGameModel game;
     private IGameModel game = new GameBoard(new Button[]{btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
-
+    private SoundManager soundManager = new SoundManager();
     private Button clickedButton;
-
-
     TicTacMenuViewController menuController;
     TicTacToe ticTacToe; //Controller
     private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
@@ -64,18 +54,16 @@ public class TicTacViewController implements Initializable
     private ImageView btnBackgroundMusicImg;
 
 
-
     @FXML
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
         System.out.println(tictoctacCounter);
         String draggedItemChecker = null;
-
         int player = game.getNextPlayer();
         System.out.println(game.getNextPlayer());
-        if (tictoctacCounter == 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
 
+        if (tictoctacCounter == 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
             if (player == 0) {
                 draggedItemChecker = "X";
             }
@@ -83,19 +71,16 @@ public class TicTacViewController implements Initializable
                 draggedItemChecker = "O";
             }
 
-
             if (draggedItemChecker.equals(draggedItem)) {
-                placement.play();
+                soundManager.startPlacement();
                 Dragboard db = clickedButton.startDragAndDrop(TransferMode.MOVE); //Gets the moved value
                 ClipboardContent content = new ClipboardContent(); //Create a clipboard
                 content.putString(draggedItem); //Put the item in the clipboard that mean its string
                 db.setContent(content);
                 event.consume();
-
             }
         }
     }
-
 
     @FXML
     private void onDragOver(DragEvent event) {
@@ -117,7 +102,7 @@ public class TicTacViewController implements Initializable
         if (db.hasString()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
-            placement.play();
+            soundManager.startPlacement();
             // Clear the text from the source button (assuming sourceButton is another Button)
             clickedButton.setText("");
             setPlayer();
@@ -139,8 +124,6 @@ public class TicTacViewController implements Initializable
         event.setDropCompleted(success);
         event.consume();
     }
-
-
 
     private void makeComputerMove() {
         int oCount = 0;
@@ -223,21 +206,6 @@ public class TicTacViewController implements Initializable
     }
 
 
-
-
-
-    @FXML
-    private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
-        if (placement.getVolume() == 0.0) {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/mute.png"));
-            placement.setVolume(0.9); // Mute by setting the volume to 0.0
-        } else {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/unmute.png"));
-            placement.setVolume(0.0); // Unmute by setting the volume to the desired level (e.g., 0.9)
-        }
-    }
-
-
     @FXML
     private void handleButtonAction(ActionEvent event)
     {
@@ -260,7 +228,7 @@ public class TicTacViewController implements Initializable
                             tictoctacCounter++;
                             btn.setText(xOrO);
                             setPlayer();
-                            placement.play();
+                            soundManager.startPlacement();
                             if (tictoctacCounter == 6) {
                                 game.getNextPlayer();
                             }
@@ -282,9 +250,6 @@ public class TicTacViewController implements Initializable
             System.out.println(e.getMessage());
         }
     }
-
-
-
 
      @FXML
      private void handleNewGame(ActionEvent event)
@@ -330,17 +295,12 @@ public class TicTacViewController implements Initializable
             lblPlayer.setText(message);
     }
 
-
-
-
-
     public void setPlayerName(String player1, String player2)  {
         this.TXT_PLAYER1 = player1;
         this.TXT_PLAYER2 = player2;
         //Add something there remove all space and add 1
 
-}
-
+    }
 
     private void clearBoard()
     {
@@ -353,6 +313,12 @@ public class TicTacViewController implements Initializable
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
         ticTacToe.setWindowAndController(1); //Go to Game
+    }
+
+    @FXML
+    private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
+        soundManager.muteUnmutePlacement(btnBackgroundMusicImg);
+        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools

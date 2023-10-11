@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import tictactoe.bll.SoundManager;
 import tictactoe.gui.TicTacToe;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -33,15 +34,13 @@ import javafx.scene.media.MediaPlayer;
 public class TicTacMenuViewController implements Initializable
 {
 
+    private SoundManager soundManager = new SoundManager();
     public HBox commonHeader;
     @FXML
     private StackPane stackPane;
 
     @FXML
     private BorderPane menuSetting, menuMain;
-
-
-    private final MediaPlayer backgroundMusic = new MediaPlayer(new Media(new File("gui/sounds/menuMainBackground.mp3").toURI().toString()));
 
     @FXML
     private TextField txtPlayer1Name, txtPlayer2Name;
@@ -61,7 +60,7 @@ public class TicTacMenuViewController implements Initializable
     private void handleNewGame(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         String buttonText = clickedButton.getText(); // Get the text of the button
-        backgroundMusic.stop();
+        soundManager.stopMusic();
 
 
         if (txtPlayer1Name.getText().isEmpty())
@@ -94,20 +93,13 @@ public class TicTacMenuViewController implements Initializable
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) {
-        if (backgroundMusic.isMute()) {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/mute.png"));
-            backgroundMusic.setMute(false); // Unmute
-        } else {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/unmute.png"));
-            backgroundMusic.setMute(true); // Mute
-        }
+        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
     }
 
 
 
     public void start()   {
-        backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusic.play();
+        soundManager.startMusic();
         stackPane.getChildren().clear();
         stackPane.getChildren().add(menuMain);
         menuMain.setTop(commonHeader);
