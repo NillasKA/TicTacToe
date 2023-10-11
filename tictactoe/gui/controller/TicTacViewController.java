@@ -73,7 +73,7 @@ public class TicTacViewController implements Initializable
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
-        System.out.println(game.getNextPlayer());
+        System.out.println("Hvem spiller nu " + game.getNextPlayer());
         if (tictoctacCounter == 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
 
             if (player == 0) {
@@ -82,7 +82,6 @@ public class TicTacViewController implements Initializable
             if (player == 1) {
                 draggedItemChecker = "O";
             }
-
 
             if (draggedItemChecker.equals(draggedItem)) {
                 placement.play();
@@ -109,21 +108,18 @@ public class TicTacViewController implements Initializable
     private void onDragDropped(DragEvent event) {
         Button targetButton = (Button) event.getSource(); // Find out what button is the target of the drop
         Dragboard db = event.getDragboard(); // Get the data from the clipboard
-
         boolean success = false;
 
-        if (targetButton.getText().isEmpty())   {
 
-        if (db.hasString()) { // Check if the data is a string
+            if (targetButton.getText().isEmpty()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
             placement.play();
-            // Clear the text from the source button (assuming sourceButton is another Button)
-            clickedButton.setText("");
+            clickedButton.setText(""); //Clear the text from the button there was dragged from
             setPlayer();
             success = true;
         }
-        }
+
 
         if (game.isGameOver())
         {
@@ -131,100 +127,100 @@ public class TicTacViewController implements Initializable
             displayWinner(winner);
         }
 
-        else if (TXT_PLAYER2.equals("Computer")) {
+        else if (TXT_PLAYER2.equals("Computer") && success) {
             makeComputerMove(); // AI's turn
         }
-
 
         event.setDropCompleted(success);
         event.consume();
     }
 
-
+    /** This can be done more intelligent or stupid with some random **/
 
     private void makeComputerMove() {
         int oCount = 0;
-        List<Button> oButtons = new ArrayList<>();  // Check the number of existing "O" markers on the board
+        List<Button> oButtons = new ArrayList<>();
+        List<Button> emptyCells = new ArrayList<>();
 
-        for (Node node : gridPane.getChildren()) {
+        for (Node node : gridPane.getChildren()) { //This code check where empty cells is and count O
             if (node instanceof Button) {
                 Button button = (Button) node;
                 if (button.getText().equals("O")) {
                     oCount++;
                     oButtons.add(button);
+                } else if (button.getText().isEmpty()) {
+                    emptyCells.add(button);
                 }
             }
         }
-        /** This can be done more intelligent **/
-        // If there are three 0, move one of them otherwise add a new 0 marker in empty spot
-        if (oCount == 3) {
-            Random random = new Random(); // Randomly select an "O" marker to move
-            int randomIndex = random.nextInt(oButtons.size());
-            Button sourceCell = oButtons.get(randomIndex);
 
-            // Crate a list of empty cells on the board
-            List<Button> emptyCells = new ArrayList<>();
-            for (Node node : gridPane.getChildren()) {
-                if (node instanceof Button) {
-                    Button button = (Button) node;
-                    if (button.getText().isEmpty()) {
-                        emptyCells.add(button);
-                    }
-                }
-            }
 
-            if (!emptyCells.isEmpty()) {
-                // Randomly select an empty cell as the destination
-                int destIndex = random.nextInt(emptyCells.size());
-                Button destinationCell = emptyCells.get(destIndex);
-
-                destinationCell.setText("O"); // Move the "O" marker from the source to the destination
-                sourceCell.setText(""); //Remove old one
-                setPlayer();
-
-            }
-        } else if (oCount < 3) {
-            // If there are fewer than three "O"s, add a new "O" marker
-            List<Button> emptyCells = new ArrayList<>();
-            for (Node node : gridPane.getChildren()) {
-                if (node instanceof Button) {
-                    Button button = (Button) node;
-                    if (button.getText().isEmpty()) {
-                        emptyCells.add(button);
-                    }
-                }
-            }
-
-            if (!emptyCells.isEmpty()) {
-                // Randomly select an empty cell and place a new "O" marker there
-                Random random = new Random();
-                int randomIndex = random.nextInt(emptyCells.size());
-                Button destinationCell = emptyCells.get(randomIndex);
-                int destRow = Optional.ofNullable(GridPane.getRowIndex(destinationCell)).orElse(0);
-                int destCol = Optional.ofNullable(GridPane.getColumnIndex(destinationCell)).orElse(0);
-
-                if (game.play(destCol, destRow)) {
-                    destinationCell.setText("O");
-                    tictoctacCounter++;
-                    setPlayer();
-
-                    if (tictoctacCounter == 6) {
-                        game.getNextPlayer();
-                    }
-                }
-            }
+        if (oCount >= 3) {
+            // Remove one "O" to make space for a new one always take the first which make bot stupid
+            oButtons.get(0).setText("");
         }
+
+        // Check if the AI can win in the next move
+        Button winningMove = findWinningMove(emptyCells, "O");
+        if (winningMove != null) {
+            int destRow = Optional.ofNullable(GridPane.getRowIndex(winningMove)).orElse(0);
+            int destCol = Optional.ofNullable(GridPane.getColumnIndex(winningMove)).orElse(0);
+            game.play(destCol, destRow);
+            winningMove.setText("O");
+        } else {
+            // Check if the player is about to win and block the player
+            Button blockingMove = findWinningMove(emptyCells, "X");
+            if (blockingMove != null) {
+                int destRow = Optional.ofNullable(GridPane.getRowIndex(blockingMove)).orElse(0);
+                int destCol = Optional.ofNullable(GridPane.getColumnIndex(blockingMove)).orElse(0);
+                game.play(destCol, destRow);
+                blockingMove.setText("O");
+            } else {
+                // If no winning or blocking moves, make a random move from the empty cells
+                Random rand = new Random();
+                if (!emptyCells.isEmpty()) {
+                    int randomIndex = rand.nextInt(emptyCells.size());
+                    int destRow = Optional.ofNullable(GridPane.getRowIndex(emptyCells.get(randomIndex))).orElse(0);
+                    int destCol = Optional.ofNullable(GridPane.getColumnIndex(emptyCells.get(randomIndex))).orElse(0);
+                    game.play(destCol, destRow);
+                    emptyCells.get(randomIndex).setText("O");
+                }
+            }
+
+        }
+
+        if (tictoctacCounter <= 5) {
+            tictoctacCounter++;
+            setPlayer();
+        }
+
+        if (tictoctacCounter == 6) {
+            game.getNextPlayer();
+        }
+
         if (game.isGameOver()) {
             int winner = game.getWinner();
-
             displayWinner(winner);
-
         }
     }
 
 
+    private Button findWinningMove(List<Button> emptyCells, String marker) {
+        for (Button cell : emptyCells) {
+            // Temporarily set the marker to check for winning move for both player
+            cell.setText(marker);
 
+            if (game.isGameOver()) {
+                // Reset the move and return the winning cell
+                cell.setText("");
+                return cell;
+            }
 
+            // Reset the move
+            cell.setText("");
+        }
+        return null; // No winning move found
+    }
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
@@ -243,6 +239,7 @@ public class TicTacViewController implements Initializable
     {
         try
         {
+
 
             game.getNextPlayer();
             Integer row = GridPane.getRowIndex((Node) event.getSource());
@@ -272,8 +269,6 @@ public class TicTacViewController implements Initializable
                         }
                         else if (TXT_PLAYER2.equals("Computer") && tictoctacCounter < 6) {
                             makeComputerMove(); // AI's turn
-                            System.out.println("Så det nu");
-
                         }
                 }
 
