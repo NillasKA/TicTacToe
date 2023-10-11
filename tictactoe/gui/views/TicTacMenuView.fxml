@@ -19,7 +19,7 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                <font>
-                  <Font size="56.0" />
+                  <Font name="Berlin Sans FB" size="56.0" />
                </font>
                <HBox.margin>
                   <Insets left="65.0" />
@@ -101,13 +101,19 @@
                <children>
                <HBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="390.0" spacing="20.0">
                   <children>
-                     <Label text="Player 1" />
+                     <Label text="Player 1">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font></Label>
                      <TextField fx:id="txtPlayer1Name" promptText="Write your name" />
                   </children>
                </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="390.0" spacing="20.0">
                   <children>
-                     <Label text="Player 2" />
+                     <Label text="Player 2">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font></Label>
                      <TextField fx:id="txtPlayer2Name" promptText="Write your name" />
                   </children>
                   </HBox>
@@ -128,7 +134,7 @@
             <children>
                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                   <font>
-                     <Font size="56.0" />
+                     <Font name="Berlin Sans FB" size="56.0" />
                   </font>
                   <HBox.margin>
                      <Insets left="65.0" />

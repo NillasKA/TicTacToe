@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -29,15 +30,42 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="31.0" prefWidth="424.0" />
-            <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" />
-            <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" />
-            <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="1" />
-            <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="2" />
-            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="110.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="btn1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="31.0" prefWidth="424.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="110.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
          </children>
          <BorderPane.margin>
             <Insets />
@@ -51,36 +79,36 @@
       <Insets />
    </opaqueInsets>
    <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="390.0" spacing="50.0" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" prefHeight="61.0" prefWidth="390.0" spacing="50.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" stylesheets="@../css/Main.css" text="New Game">
+            <Button fx:id="btnNewGame1" mnemonicParsing="false" onAction="#handleNewGame" prefWidth="80.0" stylesheets="@../css/Main.css" text="New Game">
                <styleClass>
                   <String fx:value="buttonHoverMain" />
                   <String fx:value="buttonMain" />
                </styleClass>
             </Button>
-            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" stylesheets="@../css/Main.css" text="Menu">
+            <Button fx:id="btnMainMenu" mnemonicParsing="false" onAction="#handleMainMenu" prefWidth="80.0" stylesheets="@../css/Main.css" text="Menu">
                <styleClass>
                   <String fx:value="buttonHoverMain" />
                   <String fx:value="buttonMain" />
                </styleClass></Button>
          </children>
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="25.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" top="20.0" />
          </padding>
       </HBox>
    </bottom>
    <top>
-      <VBox alignment="CENTER" prefHeight="103.0" prefWidth="390.0" BorderPane.alignment="CENTER_LEFT">
+      <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="commonHeader" prefHeight="77.0" prefWidth="390.0">
+            <HBox fx:id="commonHeader" prefHeight="63.0" prefWidth="401.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                      <font>
-                        <Font size="56.0" />
+                        <Font name="Berlin Sans FB" size="56.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="65.0" />
+                        <Insets left="75.0" />
                      </HBox.margin>
                   </Text>
                   <Button fx:id="btnBackgroundMusic" mnemonicParsing="false" onAction="#handleMuteUnmuteSound" styleClass="buttonSound" stylesheets="@../css/Main.css">
@@ -97,16 +125,39 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0">
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="401.0">
                <children>
-                  <Label fx:id="lblXScore" layoutX="23.0" layoutY="10.0" text="X: 0" />
-                  <Label fx:id="lblPlayer" text="1">
+                  <Label text="X: ">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblOScore" text="O: 0" />
+                  <Label fx:id="lblXScore" text="0">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblPlayer" text="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblOScore" text="0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
+                  <Label text=" :O">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
+               <padding>
+                  <Insets left="8.0" right="8.0" />
+               </padding>
             </HBox>
          </children>
       </VBox>

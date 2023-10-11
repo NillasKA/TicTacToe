@@ -10,9 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author Stegger
- */
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 public class GameBoard implements IGameModel
 {
     private int nextPlayer;
@@ -26,6 +25,7 @@ public class GameBoard implements IGameModel
 
     private static int xScore = 0;
     private static int oScore = 0;
+    private int latestWinner = 1;
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -106,7 +106,17 @@ public class GameBoard implements IGameModel
 
     public int getWinner()
     {
-        return  nextPlayer == 0 ? 1 : 0;
+
+        if (nextPlayer== 0) {
+        oScore++;
+        latestWinner = 1;
+    }
+        else {
+            xScore++;
+        latestWinner = 0;
+        }
+
+        return nextPlayer;
     }
 
     /**
@@ -115,9 +125,10 @@ public class GameBoard implements IGameModel
     public void newGame()
     {
         scenario.clear(); // Clears the Scenario list
-        nextPlayer = 0;
-        xScore = 0;
-        oScore = 0;
+        if (latestWinner == 0) //Latest winner in  start first time it always X
+            nextPlayer = 1;
+        else
+            nextPlayer = 0;
     }
 
     public static String getXScore() {
@@ -125,6 +136,11 @@ public class GameBoard implements IGameModel
     }
     public static String getOScore() {
         return Integer.toString(oScore);
+    }
+
+    public static void resetScore() {
+        oScore = 0;
+        xScore = 0;
     }
 
 
@@ -135,10 +151,9 @@ public class GameBoard implements IGameModel
                     {0, 4, 8}, {2, 4, 6} // Diagonals
             };
     public void xWins(int index1, int index2, int index3) {
-        xScore++;
     }
 
     public void oWins(int index1, int index2, int index3) {
-        oScore++;
+
     }
 }

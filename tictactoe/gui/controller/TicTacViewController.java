@@ -56,7 +56,7 @@ public class TicTacViewController implements Initializable
     private boolean winnerFound = false; //U only can win once until game restart
     @FXML
     private ImageView btnBackgroundMusicImg;
-
+    private boolean lockBotFroMStart = false;
 
     /*
      ******************** DRAG/DROP SECTION ********************
@@ -65,7 +65,6 @@ public class TicTacViewController implements Initializable
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
-        System.out.println(tictoctacCounter);
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
@@ -120,6 +119,10 @@ public class TicTacViewController implements Initializable
         if (game.isGameOver())
         {
             int winner = game.getWinner();
+            if (winner == 1) {
+                lockBotFroMStart = true; //Player win but player should always start in 1 player mode
+            }
+
             displayWinner(winner);
         }
 
@@ -216,6 +219,8 @@ public class TicTacViewController implements Initializable
 
         if (game.isGameOver()) {
             int winner = game.getWinner();
+
+
             displayWinner(winner);
         }
     }
@@ -334,6 +339,9 @@ public class TicTacViewController implements Initializable
                     if (game.isGameOver()) {
                         game.getNextPlayer();
                         int winner = game.getWinner();
+                        if (winner == 1) {
+                            lockBotFroMStart = true; //Player win but player should always start in 1 player mode
+                        }
                         displayWinner(winner);
                     } else if (TXT_PLAYER2.equals("Computer") && tictoctacCounter < 6) {
                         makeComputerMove(); // AI's turn
@@ -355,8 +363,12 @@ public class TicTacViewController implements Initializable
         clearBoard();
         tictoctacCounter = 0;
         winnerFound  = false;
-        lblXScore.setText("X: 0 ");
-        lblOScore.setText("0 :O");
+
+        if (lockBotFroMStart && TXT_PLAYER2.equals("Computer")) {
+            setPlayer();
+            lockBotFroMStart = false;
+        }
+
     }
 
     @Override
@@ -382,7 +394,7 @@ public class TicTacViewController implements Initializable
         tictoctacCounter = 10; //Disable drag and drop and placement
 
         if (!winnerFound) {
-            if (winner == 0) {
+            if (winner == 1) {
                 winnerPlayer = TXT_PLAYER1;
 
             }
@@ -390,8 +402,8 @@ public class TicTacViewController implements Initializable
                 winnerPlayer = TXT_PLAYER2;
             }
 
-            lblXScore.setText("X: " + GameBoard.getXScore());
-            lblOScore.setText(GameBoard.getOScore() + ":O" );
+            lblXScore.setText(GameBoard.getXScore());
+            lblOScore.setText(GameBoard.getOScore());
 
             message = winnerPlayer + " wins!!!";
             }
@@ -404,8 +416,6 @@ public class TicTacViewController implements Initializable
     public void setPlayerName(String player1, String player2)  {
         this.TXT_PLAYER1 = player1;
         this.TXT_PLAYER2 = player2;
-        //Add something there remove all space and add 1
-
 }
 
 
@@ -420,6 +430,7 @@ public class TicTacViewController implements Initializable
 
     public void start() {
         clearBoard();
+        GameBoard.resetScore();
     }
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
