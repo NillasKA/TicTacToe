@@ -1,13 +1,6 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 24-08-2016, 12:36:01
-    Author     : Stegger
-*/
-
+/**
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 
 
 #pane {
@@ -20,13 +13,11 @@ and open the template in the editor.
 .buttonMain {
     -fx-background-color: linear-gradient(to bottom, #00f6f6, #08a7bd); /* Adjust colors as needed */
     -fx-background-radius: 15px 15px 15px 15px;
-    /* Other CSS properties for body go here */
 }
 
 .buttonHoverMain:hover {
     -fx-background-color: linear-gradient(to bottom, #00e2e2, rgb(8, 147, 169)); /* Adjust colors as needed */
     -fx-background-radius: 15px 15px 15px 15px;
-    /* Other CSS properties for body go here */
 }
 
 .buttonSound {

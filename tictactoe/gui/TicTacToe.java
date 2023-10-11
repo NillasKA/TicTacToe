@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tictactoe.gui;
 
 import java.io.IOException;
-import java.net.URL;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,13 +10,12 @@ import javafx.stage.Stage;
 import tictactoe.gui.controller.TicTacMenuViewController;
 import tictactoe.gui.controller.TicTacViewController;
 
-
 /**
- * @author Stegger
- */
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 public class TicTacToe extends Application {
     private Stage primaryStage; // Declare a private Stage field
-    private FXMLLoader menuLoader;
+
 
     public static void main(String[] args) {
         Application.launch();
@@ -48,7 +40,7 @@ public class TicTacToe extends Application {
         TicTacViewController gameController = gameLoader.getController();
         gameController.setParentController(this);
 
-        // Set references
+        // Set references for controller
         gameController.setMenuController(menuController);
         menuController.setGameController(gameController);
 
@@ -75,8 +67,5 @@ public class TicTacToe extends Application {
             primaryStage.getScene().setRoot(menuRoot);
 
         }
-
     }
-
-
 }
