@@ -21,23 +21,6 @@ public class GameBoard implements IGameModel
     }
 
     /**
-     * Returns 0 for player 0, 1 for player 1.
-     *
-     * @return int Id of the next player.
-     */
-    public int getNextPlayer()
-    {
-        if(nextPlayer == 0){
-            nextPlayer = 1;
-            return 0;
-        }
-        else{
-            nextPlayer = 0;
-            return 1;
-        }
-    }
-
-    /**
      * Attempts to let the current player play at the given coordinates. It the
      * attempt is succesfull the current player has ended his turn and it is the
      * next players turn.
@@ -56,6 +39,73 @@ public class GameBoard implements IGameModel
             return true;}
         else
             return false;
+    }
+
+    /**
+     * Resets the game to a new game state.
+     */
+    public void newGame()
+    {
+        scenario.clear(); // Clears the Scenario list
+        if (latestWinner == 0) //Latest winner in  start first time it always X
+            nextPlayer = 1;
+        else
+            nextPlayer = 0;
+    }
+
+    /*
+     ********************* GETTERS *********************
+     */
+    /**
+     * Returns 0 for player 0, 1 for player 1.
+     *
+     * @return int Id of the next player.
+     */
+    public int getNextPlayer()
+    {
+        if(nextPlayer == 0){
+            nextPlayer = 1;
+            return 0;
+        }
+        else{
+            nextPlayer = 0;
+            return 1;
+        }
+    }
+
+    /**
+     * Gets the id of the winner, -1 if its a draw.
+     *
+     * @return int id of winner, or -1 if draw.
+     */
+
+    public int getWinner()
+    {
+        if (nextPlayer== 0) {
+            oScore++;
+            latestWinner = 1;
+        }
+        else {
+            xScore++;
+            latestWinner = 0;
+        }
+        return nextPlayer;
+    }
+
+    /*
+     ********************* WIN SECTION *********************
+     */
+    private int[][] winConditions =
+            {
+                    {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Rows
+                    {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
+                    {0, 4, 8}, {2, 4, 6} // Diagonals
+            };
+    public void xWins(int index1, int index2, int index3) {
+    }
+
+    public void oWins(int index1, int index2, int index3) {
+
     }
 
     /**
@@ -91,37 +141,10 @@ public class GameBoard implements IGameModel
         return false;
     }
 
-    /**
-     * Gets the id of the winner, -1 if its a draw.
-     *
-     * @return int id of winner, or -1 if draw.
+
+    /*
+     ********************* SCORE SECTION *********************
      */
-
-    public int getWinner()
-    {
-        if (nextPlayer== 0) {
-        oScore++;
-        latestWinner = 1;
-    }
-        else {
-        xScore++;
-        latestWinner = 0;
-        }
-        return nextPlayer;
-    }
-
-    /**
-     * Resets the game to a new game state.
-     */
-    public void newGame()
-    {
-        scenario.clear(); // Clears the Scenario list
-        if (latestWinner == 0) //Latest winner in  start first time it always X
-            nextPlayer = 1;
-        else
-            nextPlayer = 0;
-    }
-
     public static String getXScore() {
         return Integer.toString(xScore);
     }
@@ -132,19 +155,5 @@ public class GameBoard implements IGameModel
     public static void resetScore() {
         oScore = 0;
         xScore = 0;
-    }
-
-
-    private int[][] winConditions =
-            {
-                    {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Rows
-                    {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
-                    {0, 4, 8}, {2, 4, 6} // Diagonals
-            };
-    public void xWins(int index1, int index2, int index3) {
-    }
-
-    public void oWins(int index1, int index2, int index3) {
-
     }
 }
