@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 package tictactoe.gui.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.*;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,17 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.AudioClip;
 import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
 import tictactoe.bll.SoundManager;
 import tictactoe.gui.TicTacToe;
 
-import javax.swing.*;
-
-/**
- * @author Anders, Daniel, Kasper og Nicklas
- **/
 public class TicTacViewController implements Initializable
 {
 
@@ -49,9 +39,9 @@ public class TicTacViewController implements Initializable
     private Button clickedButton;
 
 
-    TicTacMenuViewController menuController;
-    TicTacToe ticTacToe; //Controller
-    private SoundManager soundManager;
+    private TicTacMenuViewController menuController; //Controller
+    private TicTacToe ticTacToe; //Controller
+    private SoundManager soundManager; //Controller
     private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
     private String draggedItem;
     private int tictoctacCounter = 0;
@@ -424,7 +414,7 @@ public class TicTacViewController implements Initializable
         }
     }
 
-    public void start() {
+    public void start() { //1 time setup
         clearBoard();
         GameBoard.resetScore();
         soundManager.muteUnmuteSoundUpdateImg(btnBackgroundMusicImg);
@@ -438,15 +428,12 @@ public class TicTacViewController implements Initializable
         soundManager.startSound("ui");
     }
 
-    @FXML
-    private void handleMuteUnmuteSound(ActionEvent event) { //Handles the mute button
+    @FXML //Mute/Unmute button
+    private void handleMuteUnmuteSound(ActionEvent event) {
         soundManager.muteUnmuteSound (btnBackgroundMusicImg);
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
     public void setMenuController(TicTacMenuViewController controller) {menuController = controller;}
-
-    public void setSoundManager(SoundManager soundManager) {
-        this.soundManager = soundManager;
-    }
+    public void setSoundManager(SoundManager soundManager) {this.soundManager = soundManager;}
 }

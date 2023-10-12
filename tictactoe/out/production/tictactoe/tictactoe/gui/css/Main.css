@@ -2,13 +2,17 @@
  * @author Anders, Daniel, Kasper og Nicklas
  **/
 
-
-#pane {
-    -fx-background-image: url(../images/background.jpg);
+.menu {
+    -fx-background-image: url(../images/backgroundMenu.jpg);
     -fx-background-repeat: stretch;   
     -fx-background-position: center;
 }
 
+.gamemenu {
+    -fx-background-image: url(../images/backgroundGameMenu.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center;
+}
 
 .buttonMain {
     -fx-background-color: linear-gradient(to bottom, #00f6f6, #08a7bd); /* Adjust colors as needed */
@@ -22,7 +26,4 @@
 
 .buttonSound {
     -fx-background-color: none;
-
-
 }
-

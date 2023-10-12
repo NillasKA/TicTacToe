@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bll/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bll/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/SoundManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/TicTacToe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/css/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/gui/css/Main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/images/background.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/views/TicTacMenuView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/views/TicTacMenuView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/views/TicTacView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" afterDir="false" />
@@ -15,7 +19,9 @@
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/TicTacToe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/TicTacToe.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacMenuViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacMenuViewController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/controller/TicTacViewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/css/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/css/Main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/images/background.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/images/icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacMenuView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacMenuView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/gui/views/TicTacView.fxml" afterDir="false" />
     </list>
@@ -60,6 +66,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -86,7 +93,7 @@
       <workItem from="1696835663078" duration="21739000" />
       <workItem from="1696923045665" duration="4789000" />
       <workItem from="1697008604156" duration="706000" />
-      <workItem from="1697096470389" duration="7134000" />
+      <workItem from="1697096470389" duration="10189000" />
     </task>
     <servers />
   </component>
@@ -103,5 +110,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

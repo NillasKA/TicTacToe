@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- @author Anders, Daniel, Kasper og Nicklas -->
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.gui.controller.TicTacViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="gamemenu" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.gui.controller.TicTacViewController">
    <center>
       <GridPane fx:id="gridPane" hgap="4.0" vgap="4.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -101,9 +101,9 @@
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="commonHeader" prefHeight="63.0" prefWidth="401.0">
+            <HBox fx:id="commonHeader" alignment="TOP_CENTER" prefHeight="63.0" prefWidth="411.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                      <font>
                         <Font name="Berlin Sans FB" size="56.0" />
                      </font>
@@ -127,29 +127,29 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="34.0" prefWidth="401.0">
                <children>
-                  <Label text="X: ">
+                  <Label text="X: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblXScore" text="0">
+                  <Label fx:id="lblXScore" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblPlayer" text="1">
+                  <Label fx:id="lblPlayer" text="1" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblOScore" text="0">
+                  <Label fx:id="lblOScore" text="0" textFill="WHITE">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></Label>
-                  <Label text=" :O">
+                  <Label text=" :O" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

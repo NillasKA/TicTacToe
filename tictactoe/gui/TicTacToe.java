@@ -1,3 +1,6 @@
+/**
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 package tictactoe.gui;
 
 import java.io.IOException;
@@ -11,9 +14,6 @@ import tictactoe.bll.SoundManager;
 import tictactoe.gui.controller.TicTacMenuViewController;
 import tictactoe.gui.controller.TicTacViewController;
 
-/**
- * @author Anders, Daniel, Kasper og Nicklas
- **/
 public class TicTacToe extends Application {
     private Stage primaryStage; // Declare a private Stage field
 

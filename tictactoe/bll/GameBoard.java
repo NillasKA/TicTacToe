@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package tictactoe.bll;
-import javafx.scene.control.Button;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Anders, Daniel, Kasper og Nicklas
  **/
+package tictactoe.bll;
+
+import javafx.scene.control.Button;
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameBoard implements IGameModel
 {
     private int nextPlayer;
     List scenario = new ArrayList<>();
     private Button[] buttons;
+    private static int xScore = 0;
+    private static int oScore = 0;
+    private int latestWinner = 1;
 
     public GameBoard(Button[] buttons) {
         this.buttons = buttons;
     }
-
-
-    private static int xScore = 0;
-    private static int oScore = 0;
-    private int latestWinner = 1;
 
     /**
      * Returns 0 for player 0, 1 for player 1.
@@ -106,16 +99,14 @@ public class GameBoard implements IGameModel
 
     public int getWinner()
     {
-
         if (nextPlayer== 0) {
         oScore++;
         latestWinner = 1;
     }
         else {
-            xScore++;
+        xScore++;
         latestWinner = 0;
         }
-
         return nextPlayer;
     }
 

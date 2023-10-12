@@ -1,5 +1,7 @@
+/**
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
 package tictactoe.bll;
-
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,10 +13,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Anders, Daniel, Kasper og Nicklas
- **/
-
 public class SoundManager {
 
     private boolean muteAll = false;
@@ -24,9 +22,6 @@ public class SoundManager {
 
     private static SoundManager instance;
 
-    public boolean getMuteAll(){
-        return muteAll;
-    }
 
     //Make this object only get created one
     public static SoundManager getInstance() {
@@ -36,15 +31,14 @@ public class SoundManager {
         return instance;
     }
 
+    // Initialize soundMap with their associated AudioClip instances + the music
     private SoundManager() {
-        // Initialize soundMap with keys and their associated AudioClip instances
         soundMap.put("placement", new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString()));
         soundMap.put("ui", new AudioClip(Paths.get("gui/sounds/uiSound.wav").toUri().toString()));
-
         backgroundMusic = new MediaPlayer(new Media(new File("gui/sounds/menuMainBackground.mp3").toURI().toString()));
     }
 
-    // Start a sound based on the provided key
+    // Start a sound fx. soundManager.startSound("name");
     public void startSound(String soundKey) {
         if (!muteAll) {
             AudioClip sound = soundMap.get(soundKey);
@@ -54,10 +48,8 @@ public class SoundManager {
         }
     }
 
-
-
     /*
-     ******************** MUSIC SECTION ********************
+     ********************** MUSIC SECTION **********************
      */
     public void startMusic() {
         if(!muteAll){
@@ -69,18 +61,16 @@ public class SoundManager {
             backgroundMusic.play();
             backgroundMusic.setMute(true);
         }
-
     }
     public void stopMusic() {
         backgroundMusic.stop();
     }
 
-
     /*
-     ******************** MUTe / UNMUTE SECTION ********************
+     ******************** MUTE/UNMUTE SECTION ********************
      */
 
-    // Update picture when new window loaed
+    // Update picture when new window loaded
     public void muteUnmuteSoundUpdateImg(ImageView img) {
     if (!muteAll == true)
         img.setImage(new Image("tictactoe/gui/images/mute.png"));
@@ -90,26 +80,22 @@ public class SoundManager {
 
     // Mute all sounds in the sound map
     public void muteUnmuteSound(ImageView img) {
-
         if (!muteAll == true) {
             for (AudioClip sound : soundMap.values()) {
-                if (sound != null) {
+                if (sound != null)
                     sound.setVolume(0.0);
-                }
             }
             img.setImage(new Image("tictactoe/gui/images/unmute.png"));
             backgroundMusic.setMute(true); // Mute
             muteAll = true;
         } else {
             for (AudioClip sound : soundMap.values()) {
-                if (sound != null) {
+                if (sound != null)
                     sound.setVolume(1.0);
-                }
             }
             img.setImage(new Image("tictactoe/gui/images/mute.png"));
             backgroundMusic.setMute(false); // unMute
             muteAll = false;
         }
     }
-
 }
