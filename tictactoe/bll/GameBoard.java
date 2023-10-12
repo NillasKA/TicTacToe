@@ -74,9 +74,7 @@ public class GameBoard implements IGameModel
     }
 
     /**
-     * Gets the id of the winner, -1 if its a draw.
-     *
-     * @return int id of winner, or -1 if draw.
+     * @return int id of winner
      */
 
     public int getWinner()
@@ -109,9 +107,6 @@ public class GameBoard implements IGameModel
     }
 
     /**
-     * Tells us if the game has ended either by draw or by meeting the winning
-     * condition.
-     *
      * @return true if the game is over, else it will return false.
      */
     public boolean isGameOver()
