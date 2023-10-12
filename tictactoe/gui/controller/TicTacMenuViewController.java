@@ -60,16 +60,6 @@ public class TicTacMenuViewController implements Initializable
         String buttonText = clickedButton.getText(); // Get the text of the button
         soundManager.startUISound();
         soundManager.stopMusic();
-
-        if (txtPlayer1Name.getText().isEmpty())
-            player1Name = "Player 1";
-        else this.player1Name = txtPlayer1Name.getText();
-
-        if (txtPlayer2Name.getText().isEmpty())
-            player2Name = "Player 2";
-        else this.player2Name = txtPlayer2Name.getText();
-        backgroundMusic.stop();
-
         String player1Name = txtPlayer1Name.getText().isEmpty() ? "Player 1" : txtPlayer1Name.getText();
         String player2Name = txtPlayer2Name.getText().isEmpty() ? "Player 2" : txtPlayer2Name.getText();
 
@@ -92,8 +82,6 @@ public class TicTacMenuViewController implements Initializable
 
     public void start()   {
         soundManager.startMusic();
-        backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-        backgroundMusic.play();
         newMenuView(menuMain);
     }
 

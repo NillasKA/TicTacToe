@@ -307,22 +307,8 @@ public class TicTacViewController implements Initializable
      */
 
     @FXML
-    private void handleMuteUnmuteSound(ActionEvent event) { //Make it more general soundmanager? And it should start on the same as main menu
-        if (placement.getVolume() == 0.0) {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/mute.png"));
-            placement.setVolume(0.9); // Mute by setting the volume to 0.0
-        } else {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/unmute.png"));
-            placement.setVolume(0.0); // Unmute by setting the volume to the desired level (e.g., 0.9)
-        }
-    }
-
-
-    @FXML
-    private void handleButtonAction(ActionEvent event)
-    {
-        try
-        {
+    private void handleButtonAction(ActionEvent event) {
+        try {
             if (!winnerFound) {
                 game.getNextPlayer();
                 Integer row = GridPane.getRowIndex((Node) event.getSource());
@@ -331,7 +317,6 @@ public class TicTacViewController implements Initializable
                 int c = (col == null) ? 0 : col;
                 int player = game.getNextPlayer();
                 System.out.println(c + " " + r);
-
 
                 if (game.play(c, r)) {
                     if (tictoctacCounter < 6) {
@@ -356,12 +341,12 @@ public class TicTacViewController implements Initializable
                         makeComputerMove(); // AI's turn
                     }
                 }
-
-        } catch (Exception e)
-        {
-            System.out.println(e.getMessage());
+            }
+            } catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
         }
-    }
 
 
      @FXML
@@ -429,7 +414,7 @@ public class TicTacViewController implements Initializable
         //Add something there remove all space and add 1
 
     }
-}
+
 
     private void clearBoard()
     {
