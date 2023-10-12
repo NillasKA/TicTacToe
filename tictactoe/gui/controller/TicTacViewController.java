@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
@@ -33,7 +32,7 @@ import javax.swing.*;
  **/
 public class TicTacViewController implements Initializable
 {
-    AudioClip placement = new AudioClip(Paths.get("gui/sounds/placementSound.mp3").toUri().toString());
+
     @FXML
     private Label lblPlayer, lblXScore, lblOScore;
 
@@ -47,12 +46,12 @@ public class TicTacViewController implements Initializable
 
     //private IGameModel game;
     private IGameModel game = new GameBoard(new Button[]{btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
-    private SoundManager soundManager = new SoundManager();
     private Button clickedButton;
 
 
     TicTacMenuViewController menuController;
     TicTacToe ticTacToe; //Controller
+    private SoundManager soundManager;
     private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
     private String draggedItem;
     private int tictoctacCounter = 0;
@@ -84,7 +83,7 @@ public class TicTacViewController implements Initializable
 
 
             if (draggedItemChecker.equals(draggedItem)) {
-                soundManager.startPlacement();
+                soundManager.startSound("placement");
                 Dragboard db = clickedButton.startDragAndDrop(TransferMode.MOVE); //Gets the moved value
                 ClipboardContent content = new ClipboardContent(); //Create a clipboard
                 content.putString(draggedItem); //Put the item in the clipboard that mean its string
@@ -116,7 +115,7 @@ public class TicTacViewController implements Initializable
             if (targetButton.getText().isEmpty()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
-            soundManager.startPlacement();
+                soundManager.startSound("placement");
             // Clear the text from the source button (assuming sourceButton is another Button)
             clickedButton.setText("");
             setPlayer();
@@ -325,7 +324,7 @@ public class TicTacViewController implements Initializable
                         tictoctacCounter++;
                         btn.setText(xOrO);
                         setPlayer();
-                        soundManager.startPlacement();
+                        soundManager.startSound("placement");
                         if (tictoctacCounter == 6) {
                             game.getNextPlayer();
                         }
@@ -352,7 +351,7 @@ public class TicTacViewController implements Initializable
      @FXML
      private void handleNewGame(ActionEvent event)
     {
-        soundManager.startUISound();
+        soundManager.startSound("ui");
         game.newGame();
         setPlayer();
         clearBoard();
@@ -428,22 +427,26 @@ public class TicTacViewController implements Initializable
     public void start() {
         clearBoard();
         GameBoard.resetScore();
-        soundManager.startMusic();
+        soundManager.muteUnmuteSoundUpdateImg(btnBackgroundMusicImg);
+
+
+
     }
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
         ticTacToe.setWindowAndController(1); //Go to Game
-        soundManager.startUISound();
-        soundManager.stopMusic();
+        soundManager.startSound("ui");
     }
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) { //Handles the mute button
-        soundManager.muteUnmutePlacement(btnBackgroundMusicImg);
-        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
-        System.out.println(soundManager.getMuteAll());
+        soundManager.muteUnmuteSound (btnBackgroundMusicImg);
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
     public void setMenuController(TicTacMenuViewController controller) {menuController = controller;}
+
+    public void setSoundManager(SoundManager soundManager) {
+        this.soundManager = soundManager;
+    }
 }

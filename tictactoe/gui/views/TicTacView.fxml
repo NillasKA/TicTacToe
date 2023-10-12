@@ -103,7 +103,7 @@
          <children>
             <HBox fx:id="commonHeader" prefHeight="63.0" prefWidth="401.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                      <font>
                         <Font name="Berlin Sans FB" size="56.0" />
                      </font>
@@ -127,29 +127,29 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="34.0" prefWidth="401.0">
                <children>
-                  <Label text="X: ">
+                  <Label text="X: " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblXScore" text="0">
+                  <Label fx:id="lblXScore" text="0" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblPlayer" text="1">
+                  <Label fx:id="lblPlayer" text="1" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font></Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblOScore" text="0">
+                  <Label fx:id="lblOScore" text="0" textFill="WHITE">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></Label>
-                  <Label text=" :O">
+                  <Label text=" :O" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

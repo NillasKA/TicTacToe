@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import tictactoe.bll.SoundManager;
 import tictactoe.gui.controller.TicTacMenuViewController;
 import tictactoe.gui.controller.TicTacViewController;
 
@@ -20,7 +21,7 @@ public class TicTacToe extends Application {
     public static void main(String[] args) {
         Application.launch();
     }
-
+    SoundManager soundManager = SoundManager.getInstance();
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage; // Set the primaryStage
@@ -43,6 +44,8 @@ public class TicTacToe extends Application {
         // Set references for controller
         gameController.setMenuController(menuController);
         menuController.setGameController(gameController);
+        menuController.setSoundManager(soundManager);
+        gameController.setSoundManager(soundManager);
 
         if (Choice == 0) { //First time setup
             Scene scene = new Scene(menuRoot);

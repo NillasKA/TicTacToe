@@ -33,7 +33,7 @@ import javafx.scene.media.MediaPlayer;
 public class TicTacMenuViewController implements Initializable
 {
 
-    private SoundManager soundManager = new SoundManager();
+
     public HBox commonHeader;
     @FXML
     private StackPane stackPane;
@@ -49,7 +49,7 @@ public class TicTacMenuViewController implements Initializable
 
     TicTacViewController gameController;
     TicTacToe ticTacToe; //Controller
-
+    private SoundManager soundManager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -58,8 +58,8 @@ public class TicTacMenuViewController implements Initializable
     private void handleNewGame(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         String buttonText = clickedButton.getText(); // Get the text of the button
-        soundManager.startUISound();
-        soundManager.stopMusic();
+        soundManager.startSound("ui");
+
         String player1Name = txtPlayer1Name.getText().isEmpty() ? "Player 1" : txtPlayer1Name.getText();
         String player2Name = txtPlayer2Name.getText().isEmpty() ? "Player 2" : txtPlayer2Name.getText();
 
@@ -75,14 +75,13 @@ public class TicTacMenuViewController implements Initializable
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) {
-        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
-        soundManager.muteUnmuteUI(btnBackgroundMusicImg);
-        System.out.println(soundManager.getMuteAll());
+        soundManager.muteUnmuteSound(btnBackgroundMusicImg);
     }
 
     public void start()   {
         soundManager.startMusic();
         newMenuView(menuMain);
+        soundManager.muteUnmuteSoundUpdateImg(btnBackgroundMusicImg);
     }
 
     public void newMenuView (BorderPane  viewName)  { //Universal ways to change borderpane
@@ -95,7 +94,7 @@ public class TicTacMenuViewController implements Initializable
     @FXML
     private void handleMenuSettings(ActionEvent event) throws IOException { //Change view to settings menu
         newMenuView(menuSetting);
-        soundManager.startUISound();
+        soundManager.startSound("ui");
     }
     @FXML
     public void handleMenuSettingsBack(ActionEvent actionEvent) { //Change view to main menu
@@ -112,11 +111,16 @@ public class TicTacMenuViewController implements Initializable
             }
             alert.setContentText("A name must only contains 20 characters");
             alert.showAndWait();
-            soundManager.startUISound();
+            soundManager.startSound("ui");
         }
         else newMenuView(menuMain); //Change view to main menu
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
     public void setGameController(TicTacViewController controller) {gameController = controller;} //Reference tools
+
+    public void setSoundManager(SoundManager soundManager) {
+        this.soundManager = soundManager;
+    }
+
 }
