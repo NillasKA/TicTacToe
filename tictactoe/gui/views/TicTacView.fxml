@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.gui.controller.TicTacViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="gamemenu" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tictactoe.gui.controller.TicTacViewController">
    <center>
       <GridPane fx:id="gridPane" hgap="4.0" vgap="4.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -101,7 +101,7 @@
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox fx:id="commonHeader" prefHeight="63.0" prefWidth="401.0">
+            <HBox fx:id="commonHeader" alignment="TOP_CENTER" prefHeight="63.0" prefWidth="411.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tic Tac Toe" wrappingWidth="274.5859375">
                      <font>

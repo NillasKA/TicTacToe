@@ -3,9 +3,15 @@
  **/
 
 
-#pane {
-    -fx-background-image: url(../images/background.jpg);
+.menu {
+    -fx-background-image: url(../images/backgroundMenu.jpg);
     -fx-background-repeat: stretch;   
+    -fx-background-position: center;
+}
+
+.gamemenu {
+    -fx-background-image: url(../images/backgroundGameMenu.jpg);
+    -fx-background-repeat: stretch;
     -fx-background-position: center;
 }
 
