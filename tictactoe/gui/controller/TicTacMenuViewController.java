@@ -1,38 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tictactoe.gui.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import tictactoe.bll.SoundManager;
 import tictactoe.gui.TicTacToe;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 /**
  * @author Anders, Daniel, Kasper og Nicklas
  **/
 public class TicTacMenuViewController implements Initializable
 {
 
+    private SoundManager soundManager = new SoundManager();
     public HBox commonHeader;
-
     @FXML
     private StackPane stackPane;
 
     @FXML
     private BorderPane menuSetting, menuMain;
-
-
-    private final MediaPlayer backgroundMusic = new MediaPlayer(new Media(new File("gui/sounds/menuMainBackground.mp3").toURI().toString()));
 
     @FXML
     private TextField txtPlayer1Name, txtPlayer2Name;
@@ -51,6 +58,16 @@ public class TicTacMenuViewController implements Initializable
     private void handleNewGame(ActionEvent event) throws IOException {
         Button clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         String buttonText = clickedButton.getText(); // Get the text of the button
+        soundManager.startUISound();
+        soundManager.stopMusic();
+
+        if (txtPlayer1Name.getText().isEmpty())
+            player1Name = "Player 1";
+        else this.player1Name = txtPlayer1Name.getText();
+
+        if (txtPlayer2Name.getText().isEmpty())
+            player2Name = "Player 2";
+        else this.player2Name = txtPlayer2Name.getText();
         backgroundMusic.stop();
 
         String player1Name = txtPlayer1Name.getText().isEmpty() ? "Player 1" : txtPlayer1Name.getText();
@@ -68,16 +85,13 @@ public class TicTacMenuViewController implements Initializable
 
     @FXML
     private void handleMuteUnmuteSound(ActionEvent event) {
-        if (backgroundMusic.isMute()) {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/mute.png"));
-            backgroundMusic.setMute(false); // Unmute
-        } else {
-            btnBackgroundMusicImg.setImage(new Image("tictactoe/gui/images/unmute.png"));
-            backgroundMusic.setMute(true); // Mute
-        }
+        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
+        soundManager.muteUnmuteUI(btnBackgroundMusicImg);
+        System.out.println(soundManager.getMuteAll());
     }
 
     public void start()   {
+        soundManager.startMusic();
         backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
         backgroundMusic.play();
         newMenuView(menuMain);
@@ -93,6 +107,7 @@ public class TicTacMenuViewController implements Initializable
     @FXML
     private void handleMenuSettings(ActionEvent event) throws IOException { //Change view to settings menu
         newMenuView(menuSetting);
+        soundManager.startUISound();
     }
     @FXML
     public void handleMenuSettingsBack(ActionEvent actionEvent) { //Change view to main menu
@@ -109,6 +124,7 @@ public class TicTacMenuViewController implements Initializable
             }
             alert.setContentText("A name must only contains 20 characters");
             alert.showAndWait();
+            soundManager.startUISound();
         }
         else newMenuView(menuMain); //Change view to main menu
     }

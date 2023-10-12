@@ -23,7 +23,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.media.AudioClip;
 import tictactoe.bll.GameBoard;
 import tictactoe.bll.IGameModel;
+import tictactoe.bll.SoundManager;
 import tictactoe.gui.TicTacToe;
+
+import javax.swing.*;
 
 /**
  * @author Anders, Daniel, Kasper og Nicklas
@@ -44,7 +47,7 @@ public class TicTacViewController implements Initializable
 
     //private IGameModel game;
     private IGameModel game = new GameBoard(new Button[]{btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
-
+    private SoundManager soundManager = new SoundManager();
     private Button clickedButton;
 
 
@@ -65,6 +68,7 @@ public class TicTacViewController implements Initializable
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
         draggedItem = clickedButton.getText(); // Get the text of the button
+        System.out.println(tictoctacCounter);
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
@@ -78,8 +82,9 @@ public class TicTacViewController implements Initializable
                 draggedItemChecker = "O";
             }
 
+
             if (draggedItemChecker.equals(draggedItem)) {
-                placement.play();
+                soundManager.startPlacement();
                 Dragboard db = clickedButton.startDragAndDrop(TransferMode.MOVE); //Gets the moved value
                 ClipboardContent content = new ClipboardContent(); //Create a clipboard
                 content.putString(draggedItem); //Put the item in the clipboard that mean its string
@@ -103,18 +108,21 @@ public class TicTacViewController implements Initializable
     private void onDragDropped(DragEvent event) {
         Button targetButton = (Button) event.getSource(); // Find out what button is the target of the drop
         Dragboard db = event.getDragboard(); // Get the data from the clipboard
+
         boolean success = false;
 
+        if (targetButton.getText().isEmpty())   {
 
             if (targetButton.getText().isEmpty()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
-            placement.play();
-            clickedButton.setText(""); //Clear the text from the button there was dragged from
+            soundManager.startPlacement();
+            // Clear the text from the source button (assuming sourceButton is another Button)
+            clickedButton.setText("");
             setPlayer();
             success = true;
         }
-
+        }
 
         if (game.isGameOver())
         {
@@ -324,6 +332,7 @@ public class TicTacViewController implements Initializable
                 int player = game.getNextPlayer();
                 System.out.println(c + " " + r);
 
+
                 if (game.play(c, r)) {
                     if (tictoctacCounter < 6) {
                         Button btn = (Button) event.getSource();
@@ -331,7 +340,7 @@ public class TicTacViewController implements Initializable
                         tictoctacCounter++;
                         btn.setText(xOrO);
                         setPlayer();
-                        placement.play();
+                        soundManager.startPlacement();
                         if (tictoctacCounter == 6) {
                             game.getNextPlayer();
                         }
@@ -347,7 +356,7 @@ public class TicTacViewController implements Initializable
                         makeComputerMove(); // AI's turn
                     }
                 }
-            }
+
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -358,6 +367,7 @@ public class TicTacViewController implements Initializable
      @FXML
      private void handleNewGame(ActionEvent event)
     {
+        soundManager.startUISound();
         game.newGame();
         setPlayer();
         clearBoard();
@@ -416,8 +426,10 @@ public class TicTacViewController implements Initializable
     public void setPlayerName(String player1, String player2)  {
         this.TXT_PLAYER1 = player1;
         this.TXT_PLAYER2 = player2;
-}
+        //Add something there remove all space and add 1
 
+    }
+}
 
     private void clearBoard()
     {
@@ -431,10 +443,20 @@ public class TicTacViewController implements Initializable
     public void start() {
         clearBoard();
         GameBoard.resetScore();
+        soundManager.startMusic();
     }
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
         ticTacToe.setWindowAndController(1); //Go to Game
+        soundManager.startUISound();
+        soundManager.stopMusic();
+    }
+
+    @FXML
+    private void handleMuteUnmuteSound(ActionEvent event) { //Handles the mute button
+        soundManager.muteUnmutePlacement(btnBackgroundMusicImg);
+        soundManager.muteUnmuteMusic(btnBackgroundMusicImg);
+        System.out.println(soundManager.getMuteAll());
     }
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
