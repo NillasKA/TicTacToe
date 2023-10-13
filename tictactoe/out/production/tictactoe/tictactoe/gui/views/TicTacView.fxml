@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- @author Anders, Daniel, Kasper og Nicklas -->
+
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -30,41 +32,41 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btn1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="31.0" prefWidth="424.0">
+            <Button fx:id="btn1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="31.0" prefWidth="424.0" text="G">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1">
+            <Button fx:id="btn2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="R" GridPane.columnIndex="1">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2">
+            <Button fx:id="btn3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="U" GridPane.columnIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="1">
+            <Button fx:id="btn4" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="P" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="btn5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="P" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="btn6" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="E" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.rowIndex="2">
+            <Button fx:id="btn7" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="X" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="110.0" prefWidth="127.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="btn8" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" prefHeight="110.0" prefWidth="127.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
-            <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="btn9" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleButtonAction" onDragDetected="#onDragDetected" onDragDropped="#onDragDropped" onDragOver="#onDragOver" text="O" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="42.0" />
                </font></Button>
          </children>
          <BorderPane.margin>
@@ -137,7 +139,7 @@
                         <Font name="System Italic" size="12.0" />
                      </font></Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblPlayer" text="1" textFill="WHITE">
+                  <Label fx:id="lblPlayer" text="HEJ SØREN" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font></Label>

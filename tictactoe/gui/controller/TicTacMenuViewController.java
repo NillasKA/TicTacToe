@@ -107,5 +107,5 @@ public class TicTacMenuViewController implements Initializable
 
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
     public void setGameController(TicTacViewController controller) {gameController = controller;} //Reference tools
-    public void setSoundManager(SoundManager soundManager) {this.soundManager = soundManager;}
+    public void setSoundManager(SoundManager soundManager) {this.soundManager = soundManager;} //Reference tools
 }

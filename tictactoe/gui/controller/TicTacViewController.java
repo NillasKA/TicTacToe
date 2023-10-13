@@ -22,13 +22,8 @@ import tictactoe.gui.TicTacToe;
 
 public class TicTacViewController implements Initializable
 {
-
     @FXML
     private Label lblPlayer, lblXScore, lblOScore;
-
-    @FXML
-    private Button btnNewGame;
-
     @FXML
     private GridPane gridPane;
     @FXML
@@ -37,18 +32,16 @@ public class TicTacViewController implements Initializable
     //private IGameModel game;
     private IGameModel game = new GameBoard(new Button[]{btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
     private Button clickedButton;
-
-
     private TicTacMenuViewController menuController; //Controller
     private TicTacToe ticTacToe; //Controller
     private SoundManager soundManager; //Controller
     private static String TXT_PLAYER1  = "Player 1", TXT_PLAYER2 = "Player 2";
-    private String draggedItem;
     private int tictoctacCounter = 0;
     private boolean winnerFound = false; //U only can win once until game restart
     @FXML
     private ImageView btnBackgroundMusicImg;
     private boolean lockBotFroMStart = false;
+
 
     /*
      ******************** DRAG/DROP SECTION ********************
@@ -56,13 +49,13 @@ public class TicTacViewController implements Initializable
     @FXML
     private void onDragDetected(MouseEvent event) {
         clickedButton = (Button) event.getSource(); // Get the button that triggered the event
-        draggedItem = clickedButton.getText(); // Get the text of the button
+        String draggedItem = clickedButton.getText(); // Get the text of the button
         System.out.println(tictoctacCounter);
         String draggedItemChecker = null;
 
         int player = game.getNextPlayer();
-        System.out.println("Hvem spiller nu " + game.getNextPlayer());
-        if (tictoctacCounter == 6 && !draggedItem.equals("")) { //If there is a item and all 6 is set
+        System.out.println("Current player : " + game.getNextPlayer());
+        if (tictoctacCounter == 6 && !draggedItem.isEmpty()) { //If there is an item and all 6 is set
 
             if (player == 0) {
                 draggedItemChecker = "X";
@@ -93,6 +86,7 @@ public class TicTacViewController implements Initializable
         event.consume();
     }
 
+
     @FXML
     private void onDragDropped(DragEvent event) {
         Button targetButton = (Button) event.getSource(); // Find out what button is the target of the drop
@@ -100,17 +94,14 @@ public class TicTacViewController implements Initializable
 
         boolean success = false;
 
-        if (targetButton.getText().isEmpty())   {
-
-            if (targetButton.getText().isEmpty()) { // Check if the data is a string
+        if (targetButton.getText().isEmpty()) { // Check if the data is a string
             String draggedText = db.getString();  // Get the text from the clipboard
             targetButton.setText(draggedText); // Add the dragged text to the target button
-                soundManager.startSound("placement");
+            soundManager.startSound("placement");
             // Clear the text from the source button (assuming sourceButton is another Button)
             clickedButton.setText("");
             setPlayer();
             success = true;
-        }
         }
 
         if (game.isGameOver())
@@ -131,20 +122,19 @@ public class TicTacViewController implements Initializable
         event.consume();
     }
 
+
     /*
      ******************** BOT SECTION ********************
      */
 
     /** This can be done more intelligent or stupid with some random **/
-
     private void makeComputerMove() {
         int oCount = 0;
         List<Button> oButtons = new ArrayList<>();
         List<Button> emptyCells = new ArrayList<>();
 
         for (Node node : gridPane.getChildren()) {
-            if (node instanceof Button) {
-                Button button = (Button) node;
+            if (node instanceof Button button) {
                 if (button.getText().equals("O")) {
                     oCount++;
                     oButtons.add(button);
@@ -180,7 +170,6 @@ public class TicTacViewController implements Initializable
                     emptyCells.get(randomIndex).setText("O");
                 }
             }
-
         }
 
         if (oCount >= 3) {
@@ -221,6 +210,7 @@ public class TicTacViewController implements Initializable
             displayWinner(winner);
         }
     }
+
 
     private boolean playerIsAboutToWin(String marker) {
         for (Node node : gridPane.getChildren()) {
@@ -274,6 +264,7 @@ public class TicTacViewController implements Initializable
         return blockingOButtons;
     }
 
+
     private Button findWinningMove(List<Button> emptyCells, String marker) {
         for (Button cell : emptyCells) {
             // Temporarily set the marker to check for winning move for both player
@@ -291,21 +282,20 @@ public class TicTacViewController implements Initializable
         return null; // No winning move found
     }
 
+
     /*
      ******************** OTHER SECTION ********************
      */
-
     @FXML
     private void handleButtonAction(ActionEvent event) {
         try {
             if (!winnerFound) {
-                game.getNextPlayer();
-                Integer row = GridPane.getRowIndex((Node) event.getSource());
-                Integer col = GridPane.getColumnIndex((Node) event.getSource());
+                game.getNextPlayer(); //Checks for next player
+                Integer row = GridPane.getRowIndex((Node) event.getSource()); //Finds the rows for the board
+                Integer col = GridPane.getColumnIndex((Node) event.getSource()); //Finds the columns for the board
                 int r = (row == null) ? 0 : row;
                 int c = (col == null) ? 0 : col;
-                int player = game.getNextPlayer();
-                System.out.println(c + " " + r);
+                int player = game.getNextPlayer(); // Assigns "Player" to the next player
 
                 if (game.play(c, r)) {
                     if (tictoctacCounter < 6) {
@@ -355,13 +345,15 @@ public class TicTacViewController implements Initializable
 
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        Button[] buttonsArray = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9};
+        Button[] buttonsArray = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9}; //Array meant to give gameboard access to buttons
         game = new GameBoard(buttonsArray);
         setPlayer();
     }
+
 
     private void setPlayer()
     {
@@ -370,6 +362,7 @@ public class TicTacViewController implements Initializable
         else
             lblPlayer.setText(TXT_PLAYER2);
     }
+
 
     private void displayWinner(int winner)
     {
@@ -396,12 +389,9 @@ public class TicTacViewController implements Initializable
     }
 
 
-
     public void setPlayerName(String player1, String player2)  {
         this.TXT_PLAYER1 = player1;
         this.TXT_PLAYER2 = player2;
-        //Add something there remove all space and add 1
-
     }
 
 
@@ -414,26 +404,27 @@ public class TicTacViewController implements Initializable
         }
     }
 
+
     public void start() { //1 time setup
         clearBoard();
         GameBoard.resetScore();
         soundManager.muteUnmuteSoundUpdateImg(btnBackgroundMusicImg);
-
-
-
     }
+
 
     public void handleMainMenu(ActionEvent actionEvent) throws IOException {
         ticTacToe.setWindowAndController(1); //Go to Game
         soundManager.startSound("ui");
     }
 
+
     @FXML //Mute/Unmute button
     private void handleMuteUnmuteSound(ActionEvent event) {
         soundManager.muteUnmuteSound (btnBackgroundMusicImg);
     }
 
+
     public void setParentController(TicTacToe controller) {ticTacToe = controller;} //Reference tools
-    public void setMenuController(TicTacMenuViewController controller) {menuController = controller;}
-    public void setSoundManager(SoundManager soundManager) {this.soundManager = soundManager;}
+    public void setMenuController(TicTacMenuViewController controller) {menuController = controller;} //Reference tools
+    public void setSoundManager(SoundManager soundManager) {this.soundManager = soundManager;} //Reference tools
 }

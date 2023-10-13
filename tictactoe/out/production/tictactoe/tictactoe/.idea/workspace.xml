@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
+    <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="Merged it all">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bll/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bll/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/SoundManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/bll/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/bll/GameBoard.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +53,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -76,21 +80,16 @@
       <workItem from="1696835663078" duration="21739000" />
       <workItem from="1696923045665" duration="4789000" />
       <workItem from="1697008604156" duration="706000" />
+      <workItem from="1697096470389" duration="10189000" />
+      <workItem from="1697181444835" duration="1555000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/gui/TicTacToe.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

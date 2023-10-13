@@ -10,8 +10,8 @@ import java.util.List;
 public class GameBoard implements IGameModel
 {
     private int nextPlayer;
-    List scenario = new ArrayList<>();
-    private Button[] buttons;
+    List<Object> scenario = new ArrayList<>();
+    private final Button[] buttons;
     private static int xScore = 0;
     private static int oScore = 0;
     private int latestWinner = 1;
@@ -32,11 +32,11 @@ public class GameBoard implements IGameModel
      */
     public boolean play(int col, int row)
     {
-        String playedScenario = Integer.toString(col) + row;
-        if(!scenario.contains(playedScenario)){
+        String playedScenario = Integer.toString(col) + row; //Converts played field to a string
+        if(!scenario.contains(playedScenario)){ // Checks if played field is in a list
             scenario.add(playedScenario);
             System.out.println(scenario);
-            return true;}
+            return true;}  //Allows the player to place their mark on the field.
         else
             return false;
     }
@@ -93,18 +93,12 @@ public class GameBoard implements IGameModel
     /*
      ********************* WIN SECTION *********************
      */
-    private int[][] winConditions =
+    private final int[][] winConditions =
             {
                     {0, 1, 2}, {3, 4, 5}, {6, 7, 8}, // Rows
                     {0, 3, 6}, {1, 4, 7}, {2, 5, 8}, // Columns
                     {0, 4, 8}, {2, 4, 6} // Diagonals
             };
-    public void xWins(int index1, int index2, int index3) {
-    }
-
-    public void oWins(int index1, int index2, int index3) {
-
-    }
 
     /**
      * @return true if the game is over, else it will return false.
@@ -117,7 +111,6 @@ public class GameBoard implements IGameModel
                 buttons[winCondition[1]].getText().equals("X") &&
                 buttons[winCondition[2]].getText().equals("X")) {
 
-                xWins(winCondition[0], winCondition[1], winCondition[2]);
                 return true;
             }
         }
@@ -128,7 +121,6 @@ public class GameBoard implements IGameModel
                 buttons[winCondition[1]].getText().equals("O") &&
                 buttons[winCondition[2]].getText().equals("O")) {
 
-                oWins(winCondition[0], winCondition[1], winCondition[2]);
                 return true;
             }
         }
