@@ -1,0 +1,29 @@
+/**
+ * @author Anders, Daniel, Kasper og Nicklas
+ **/
+
+.menu {
+    -fx-background-image: url(../images/backgroundMenu.jpg);
+    -fx-background-repeat: stretch;   
+    -fx-background-position: center;
+}
+
+.gamemenu {
+    -fx-background-image: url(../images/backgroundGameMenu.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center;
+}
+
+.buttonMain {
+    -fx-background-color: linear-gradient(to bottom, #00f6f6, #08a7bd); /* Adjust colors as needed */
+    -fx-background-radius: 15px 15px 15px 15px;
+}
+
+.buttonHoverMain:hover {
+    -fx-background-color: linear-gradient(to bottom, #00e2e2, rgb(8, 147, 169)); /* Adjust colors as needed */
+    -fx-background-radius: 15px 15px 15px 15px;
+}
+
+.buttonSound {
+    -fx-background-color: none;
+}

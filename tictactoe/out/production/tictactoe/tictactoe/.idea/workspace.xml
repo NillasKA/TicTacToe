@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="Merged it all">
+    <list default="true" id="eb9564a0-96ad-4652-8db7-a15e6dd2dc7d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12-10-2023_09_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12-10-2023_09_17__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bll/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bll/SoundManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/bll/SoundManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacMenuViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/controller/TicTacViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/bll/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/bll/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/shelf/Uncommitted_changes_before_Merge_at_12-10-2023_09_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/shelf/Uncommitted_changes_before_Merge_at_12-10-2023_09_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tictactoe/tictactoe/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +79,9 @@
       <workItem from="1696923045665" duration="4789000" />
       <workItem from="1697008604156" duration="706000" />
       <workItem from="1697096470389" duration="10189000" />
-      <workItem from="1697181444835" duration="1555000" />
+      <workItem from="1697183943680" duration="2678000" />
+      <workItem from="1697187813054" duration="76000" />
+      <workItem from="1697197320024" duration="1000" />
     </task>
     <servers />
   </component>
